@@ -5,9 +5,9 @@
 import { useState, useRef, useEffect, SetStateAction } from 'react';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 
-const Dropdown = () => {
+const Swimdown = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('English');
+  const [selectedOption, setSelectedOption] = useState('SWIMWEAR');
   const dropdownRef = useRef(null);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
@@ -34,33 +34,28 @@ const Dropdown = () => {
     <div className="relative " ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
-        className=" flex flex-row items-center gap-2 px-4 py-2 text-[12px]  w-full text-left"
+        className=" flex flex-row items-center   py-2 text-[16px]  w-full text-left"
       >
         {selectedOption}
-        <MdOutlineKeyboardArrowDown />
+        <MdOutlineKeyboardArrowDown className="mt-1" />
       </button>
       {isOpen && (
-        <ul className="absolute w-[150px] bg-white   mt-[-2px] ml-[-50px] shadow-md z-50 py-2">
-          {[
-            'English',
-            'Espanol',
-            'Italiano',
-            'Deutsch',
-            'Froncais',
-            'Nederlands',
-          ].map((option) => (
-            <li
-              key={option}
-              onClick={() => handleOptionClick(option)}
-              className="px-8 py-1  cursor-pointer text-[12px] hover:text-slate-600	"
-            >
-              {option}
-            </li>
-          ))}
+        <ul className="absolute  w-[220px] bg-white   mt-[-2px] ml-[-50px] shadow-md z-50 py-4">
+          {['POP GELATO SS23', 'BIKINI', 'SWIMSUITS', 'SEPARATES'].map(
+            (option) => (
+              <li
+                key={option}
+                onClick={() => handleOptionClick(option)}
+                className="px-8 py-1  cursor-pointer text-[16px] hover:text-slate-600"
+              >
+                {option}
+              </li>
+            ),
+          )}
         </ul>
       )}
     </div>
   );
 };
 
-export default Dropdown;
+export default Swimdown;

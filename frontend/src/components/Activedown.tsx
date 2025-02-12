@@ -5,9 +5,9 @@
 import { useState, useRef, useEffect, SetStateAction } from 'react';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 
-const Dropdown = () => {
+const Activedown = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('English');
+  const [selectedOption, setSelectedOption] = useState('ACTIVEWEAR');
   const dropdownRef = useRef(null);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
@@ -34,25 +34,26 @@ const Dropdown = () => {
     <div className="relative " ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
-        className=" flex flex-row items-center gap-2 px-4 py-2 text-[12px]  w-full text-left"
+        className=" flex flex-row items-center  py-2 text-[16px]  w-full text-left"
       >
         {selectedOption}
-        <MdOutlineKeyboardArrowDown />
+        <MdOutlineKeyboardArrowDown className="mt-1" />
       </button>
       {isOpen && (
-        <ul className="absolute w-[150px] bg-white   mt-[-2px] ml-[-50px] shadow-md z-50 py-2">
+        <ul className="absolute w-[220px] bg-white   ml-[-50px] shadow-md z-50 py-4">
           {[
-            'English',
-            'Espanol',
-            'Italiano',
-            'Deutsch',
-            'Froncais',
-            'Nederlands',
+            'THE BLACK EDIT',
+            'Allyoucanfit X SW',
+            'Shop Prints',
+            'SHOP ALL',
+            'SPORTS BRA',
+            'LEGGINGS',
+            'SHORTS',
           ].map((option) => (
             <li
               key={option}
               onClick={() => handleOptionClick(option)}
-              className="px-8 py-1  cursor-pointer text-[12px] hover:text-slate-600	"
+              className="px-8 py-1  cursor-pointer text-[16px] hover:text-slate-600	"
             >
               {option}
             </li>
@@ -63,4 +64,4 @@ const Dropdown = () => {
   );
 };
 
-export default Dropdown;
+export default Activedown;
