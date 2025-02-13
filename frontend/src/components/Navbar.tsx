@@ -1,8 +1,17 @@
 /** @format */
 import Image from 'next/image';
 import React from 'react';
+import Link from 'next/link';
 import Activedown from './Activedown';
 import Swimdown from './Swindown';
+import { Righteous } from 'next/font/google';
+
+const right = Righteous({
+  weight: '400',
+  style: ['normal'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 const Navbar = () => {
   return (
@@ -19,18 +28,30 @@ const Navbar = () => {
             />
           </div>
           <div className="flex flex-row items-center justify-center gap-4">
-            <ul className="flex flex-row items-center text-[16px] gap-4 font-bold">
-              <li>HOME</li>
+            <ul
+              className={`flex flex-row items-center text-[16px] gap-4 font-bold ${right.className}`}
+            >
+              <li>
+                <Link href={''}>HOME</Link>
+              </li>
               <li>
                 <Activedown />
               </li>
               <li>
                 <Swimdown />
               </li>
-              <li>SUSTAINABILITY</li>
-              <li>My WISHLIST</li>
-              <li>SEARCH</li>
-              <li>LOGIN</li>
+              <li>
+                <Link href={''}>SUSTAINABILITY</Link>
+              </li>
+              <li>
+                <Link href={''}>My WISHLIST</Link>
+              </li>
+              <li>
+                <Link href={''}>SEARCH</Link>
+              </li>
+              <li>
+                <Link href={''}>LOGIN</Link>
+              </li>
             </ul>
 
             <div className="h-[36px] w-[36px] flex items-center justify-center  border-[1px] border-[#C3C3C3] rounded-full">

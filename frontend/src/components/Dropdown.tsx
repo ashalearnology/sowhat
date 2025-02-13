@@ -8,7 +8,7 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('English');
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 

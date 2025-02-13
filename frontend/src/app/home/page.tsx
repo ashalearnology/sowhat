@@ -1,5 +1,6 @@
 /** @format */
 
+import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import Navbar from '@/components/Navbar';
 import Uppertitle from '@/components/Uppertitle';
@@ -11,6 +12,7 @@ const page = () => {
       <Uppertitle />
       <Navbar />
       <Hero />
+      <Footer />
     </>
   );
 };

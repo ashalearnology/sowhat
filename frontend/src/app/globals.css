@@ -1,5 +1,4 @@
 /** @format */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -22,7 +21,7 @@ ol {
   /* background-position: center; */
   background-repeat: no-repeat;
   background-size: cover;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
