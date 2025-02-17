@@ -38,7 +38,7 @@ const ImageSlider = () => {
       onClick={onClick}
       className={`absolute left-3 top-1/3 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full 
       transition-all duration-300 ease-in-out z-10 ${
-        isHovered ? 'opacity-100 translate-x-0 ' : 'opacity-0 translate-x-6'
+        isHovered ? 'opacity-100  ' : 'opacity-0 '
       }`}
     >
       <FaArrowLeft size={20} />
@@ -54,7 +54,7 @@ const ImageSlider = () => {
       onClick={onClick}
       className={`absolute right-3 top-1/3 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full 
       transition-all duration-300 ease-in-out z-10 ${
-        isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-6'
+        isHovered ? 'opacity-100 ' : 'opacity-0 '
       }`}
     >
       <FaArrowRight size={20} />

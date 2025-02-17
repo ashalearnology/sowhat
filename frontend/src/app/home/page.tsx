@@ -9,6 +9,10 @@ import CustomPrevArrow from '@/components/CustomPrevArrow';
 import Seen from '@/components/Seen';
 import React from 'react';
 import Trending from '@/components/Trending';
+import Line from '@/components/Line';
+import Shop from '@/components/Shop';
+import Readmore from '@/components/Readmore';
+import Fade from '@/components/Fade';
 
 const page = () => {
   return (
@@ -20,7 +24,11 @@ const page = () => {
       <CustomPrevArrow />
       <Seen />
       <Trending />
-      {/* <Footer /> */}
+      <Line />
+      <Shop />
+      <Readmore />
+      <Fade />
+      <Footer />
     </>
   );
 };

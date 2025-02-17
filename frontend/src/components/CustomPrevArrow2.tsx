@@ -14,38 +14,38 @@ const ImageSlider = () => {
   const slides = [
     {
       url: '/images/home/trending1.jpg',
-      text: 'Shoap Lounge Dresses',
-      protext: '13 Productos',
+      text: 'Shop Ultra Soft Leggings',
+      protext: '37 Productos',
     },
     {
       url: '/images/home/trending2.jpg',
-      text: 'Shoap Care Shorts',
-      protext: '8 Productos',
+      text: 'Shop The Statement',
+      protext: '17 Productos',
     },
     {
       url: '/images/home/trending3.png',
-      text: 'Care bottoms',
-      protext: '29 Productos',
+      text: 'Shop Sports Tops & Sports Bras',
+      protext: '57 Productos',
     },
     {
       url: '/images/home/trending4.jpg',
-      text: 'Shoap Bodysuits',
-      protext: '33 Productos',
+      text: 'Shop Recycled Bikni Sets',
+      protext: '11 Productos',
     },
     {
       url: '/images/home/trending5.jpg',
-      text: 'Core Shorts Bros & Tops',
-      protext: '55 Productos',
+      text: 'AW22 - Shop Shorts',
+      protext: '25 Productos',
     },
     {
       url: '/images/home/trending6.png',
-      text: 'Core Shorts Bros & Tops',
-      protext: '55 Productos',
+      text: 'Sweatshirts & Hoodies',
+      protext: '29 Productos',
     },
     {
       url: '/images/home/trending7.jpg',
-      text: 'Core Shorts Bros & Tops',
-      protext: '55 Productos',
+      text: 'Shop Pop Gelato Swimwear',
+      protext: '28 Productos',
     },
   ];
 
@@ -58,7 +58,7 @@ const ImageSlider = () => {
       onClick={onClick}
       className={`absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full 
       transition-all duration-300 ease-in-out z-10 ${
-        isHovered ? 'opacity-100 translate-x-0 ' : 'opacity-0 translate-x-6'
+        isHovered ? 'opacity-100 translate-x-0 ' : 'opacity-0'
       }`}
     >
       <FaArrowLeft size={20} />
@@ -74,7 +74,7 @@ const ImageSlider = () => {
       onClick={onClick}
       className={`absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full 
       transition-all duration-300 ease-in-out z-10 ${
-        isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-6'
+        isHovered ? 'opacity-100 translate-x-0' : 'opacity-0'
       }`}
     >
       <FaArrowRight size={20} />
