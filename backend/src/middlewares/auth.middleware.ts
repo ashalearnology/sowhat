@@ -11,7 +11,7 @@ declare global {
 }
 
 export const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
-    const token = req.headers.authorization?.split(" ")[1] || req.cookies.token;
+    const token = req.headers.authorization?.split(" ")[1] || req.cookies.accessToken;
 
     if (!token) {
         throw new ApiError(401, "Unauthorized - No token provided");

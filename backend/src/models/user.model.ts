@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import bcrypt from "bcryptjs";
 
 export interface IUser {
     _id?: string;
@@ -7,6 +8,9 @@ export interface IUser {
     email: string;
     password: string;
     role: "user" | "admin";
+    refreshToken?: string;
+    resetPasswordToken?: string;
+    resetPasswordTokenExpiry?: Date;
     createdAt?: Date;
     updatedAt?: Date;
 }
@@ -34,7 +38,17 @@ const userSchema = new Schema<IUser>({
         enum: ["user", "admin"],
         default: "user",
     },
+    refreshToken: String,
+    resetPasswordToken: String,
+    resetPasswordTokenExpiry: Date
 }, { timestamps: true, versionKey: false });
+
+userSchema.pre('save', function (next) {
+    if (this.isModified('password')) {
+        this.password = bcrypt.hashSync(this.password, 10);
+    }
+    next();
+})
 
 const User = model('User', userSchema);
 export default User;
