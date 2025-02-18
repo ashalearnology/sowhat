@@ -2,9 +2,12 @@ import { Schema, Types, model } from "mongoose";
 
 export interface IUserAddress {
     user: Types.ObjectId;
-    fullName: string;
+    firstName: string;
+    lastName: string;
     phone: string;
     address: string;
+    appartment?: string;
+    company?: string;
     city: string;
     state: string;
     country: string;
@@ -20,7 +23,11 @@ const userAddressSchema = new Schema<IUserAddress>({
         ref: "User",
         required: true,
     },
-    fullName: {
+    firstName: {
+        type: String,
+        required: true,
+    },
+    lastName: {
         type: String,
         required: true,
     },
@@ -31,6 +38,12 @@ const userAddressSchema = new Schema<IUserAddress>({
     address: {
         type: String,
         required: true,
+    },
+    appartment: {
+        type: String,
+    },
+    company: {
+        type: String,
     },
     city: {
         type: String,

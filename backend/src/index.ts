@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
+import errorHandler from "./utils/errorHandler.ts";
 import connectToDB from "./config/db.ts";
 
 dotenv.config();
@@ -26,9 +27,10 @@ app.use(morgan("dev"));
 
 // Routes
 import userRoutes from "./routes/user.routes.ts";
-import errorHandler from "./utils/errorHandler.ts";
+import userAddressRoutes from "./routes/userAddress.routes.ts";
 
 app.use("/api/v1/auth", userRoutes);
+app.use("/api/v1/address", userAddressRoutes);
 
 // Error Handler
 app.use(errorHandler);
