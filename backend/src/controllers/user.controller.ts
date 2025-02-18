@@ -113,7 +113,7 @@ export const login = asyncHandler(async (req: Request, res: Response): Promise<v
 });
 
 export const logout = asyncHandler(async (req: Request, res: Response): Promise<void> => {
-    const userId = req.user?.id;
+    const userId = req.user?._id;
 
     await User.findByIdAndUpdate(userId, { refreshToken: null });
 
@@ -138,7 +138,7 @@ export const getUser = asyncHandler(async (req: Request, res: Response): Promise
         throw new ApiError(401, "Unauthorized.");
     }
 
-    const user = await User.findById(req.user.id);
+    const user = await User.findById(req.user?._id);
 
     if (!user) {
         throw new ApiError(404, "User not found.");
