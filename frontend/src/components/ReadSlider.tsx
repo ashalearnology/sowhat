@@ -7,7 +7,8 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import HoverButton from './HoverButton';
+// import HoverButton from './HoverButton';
+import Link from 'next/link';
 
 const ImageSlider = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -94,12 +95,14 @@ const ImageSlider = () => {
       <Slider {...settings}>
         {slides.map((slide, index) => (
           <div key={index} className="relative  min-h-[51.875rem]">
-            <img
-              src={slide.url}
-              alt={`Slide ${index + 1}, Slide ${index - 1}`}
-              className="w-[41.881rem] h-[27.923rem] object-center"
-              loading="lazy"
-            />
+            <Link href={'/read-more'}>
+              <img
+                src={slide.url}
+                alt={`Slide ${index + 1}, Slide ${index - 1}`}
+                className="w-[41.881rem] h-[27.923rem] object-center"
+                loading="lazy"
+              />
+            </Link>
             <div className="text-center tracking-wider mx-auto flex flex-col items-center gap-4	py-14">
               <h1 className="text-xs  font-bold">{slide.text}</h1>
               <h2 className="text-3xl font-bold tracking-widest max-w-[31.25rem]">

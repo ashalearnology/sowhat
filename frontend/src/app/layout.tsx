@@ -3,6 +3,9 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import Uppertitle from '@/components/Uppertitle';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -28,7 +31,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" cross-origin="true"/>
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          cross-origin="true"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
           rel="stylesheet"
@@ -37,7 +44,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Uppertitle />
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

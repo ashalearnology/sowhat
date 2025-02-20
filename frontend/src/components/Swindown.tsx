@@ -4,6 +4,7 @@
 
 import { useState, useRef, useEffect, SetStateAction } from 'react';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
+import Link from 'next/link';
 
 const Swimdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,17 +42,21 @@ const Swimdown = () => {
       </button>
       {isOpen && (
         <ul className="absolute  w-[220px] bg-white   mt-[-2px] ml-[-50px] shadow-md z-50 py-4">
-          {['POP GELATO SS23', 'BIKINI', 'SWIMSUITS', 'SEPARATES'].map(
-            (option) => (
-              <li
-                key={option}
-                onClick={() => handleOptionClick(option)}
-                className="px-8 py-1  cursor-pointer text-[16px] hover:text-slate-600"
-              >
-                {option}
-              </li>
-            ),
-          )}
+          {[
+            { name: 'SWIMWEAR', path: '/home' },
+            { name: 'POP GELATO SS23', path: '/Pop_gelato' },
+            { name: 'BIKINI', path: '/Bikine' },
+            { name: 'SWIMSUITS', path: '/Swimsuits' },
+            { name: 'SEPARATES', path: '/Separates' },
+          ].map((option, index) => (
+            <li
+              key={index}
+              onClick={() => handleOptionClick(option.name)}
+              className="px-8 py-1  cursor-pointer text-[16px] hover:text-slate-600"
+            >
+              <Link href={option.path}>{option.name}</Link>
+            </li>
+          ))}
         </ul>
       )}
     </div>

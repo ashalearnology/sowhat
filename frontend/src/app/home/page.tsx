@@ -1,10 +1,10 @@
 /** @format */
 
-import Footer from '@/components/Footer';
+// import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import HomeHead1 from '@/components/HomeHead1';
-import Navbar from '@/components/Navbar';
-import Uppertitle from '@/components/Uppertitle';
+// import Navbar from '@/components/Navbar';
+// import Uppertitle from '@/components/Uppertitle';
 import CustomPrevArrow from '@/components/CustomPrevArrow';
 import Seen from '@/components/Seen';
 import React from 'react';
@@ -17,8 +17,8 @@ import Fade from '@/components/Fade';
 const page = () => {
   return (
     <>
-      <Uppertitle />
-      <Navbar />
+      {/* <Uppertitle /> */}
+      {/* <Navbar /> */}
       <Hero />
       <HomeHead1 />
       <CustomPrevArrow />
@@ -28,7 +28,7 @@ const page = () => {
       <Shop />
       <Readmore />
       <Fade />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

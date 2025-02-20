@@ -4,6 +4,7 @@
 
 import { useState, useRef, useEffect, SetStateAction } from 'react';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
+import Link from 'next/link';
 
 const Activedown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,20 +43,21 @@ const Activedown = () => {
       {isOpen && (
         <ul className="absolute w-[220px] bg-white   ml-[-50px] shadow-md z-50 py-4">
           {[
-            'THE BLACK EDIT',
-            'Allyoucanfit X SW',
-            'Shop Prints',
-            'SHOP ALL',
-            'SPORTS BRA',
-            'LEGGINGS',
-            'SHORTS',
-          ].map((option) => (
+            { name: 'ACTIVEWEAR', path: '/home' },
+            { name: 'THE BLACK EDIT', path: '/the_black_edit' },
+            { name: 'Allyoucanfit X SW', path: '/Allyoucanfit_x' },
+            { name: 'Shop Prints', path: '/Shop' },
+            { name: 'SHOP ALL', path: '/shop_all' },
+            { name: 'SPORTS BRA', path: '/sport_bra' },
+            { name: 'LEGGINGS', path: '/Leggings' },
+            { name: 'SHORTS', path: '/Sports' },
+          ].map((option, index) => (
             <li
-              key={option}
-              onClick={() => handleOptionClick(option)}
+              key={index}
+              onClick={() => handleOptionClick(option.name)}
               className="px-8 py-1  cursor-pointer text-[16px] hover:text-slate-600	"
             >
-              {option}
+              <Link href={option.path}>{option.name}</Link>
             </li>
           ))}
         </ul>
