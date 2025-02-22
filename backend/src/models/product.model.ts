@@ -25,7 +25,6 @@ const productSchema = new Schema<IProduct>({
         required: [true, "Product name is required"],
         maxLength: [100, "Product name cannot exceed 100 characters"],
         trim: true,
-        unique: true
     },
     slug: {
         type: String,
@@ -42,7 +41,7 @@ const productSchema = new Schema<IProduct>({
     },
     images: {
         type: [String],
-        required: [true, "Product images are required"],
+        // required: [true, "Product images are required"],
     },
     size: {
         type: String,
