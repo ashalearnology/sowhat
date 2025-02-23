@@ -165,13 +165,13 @@ export default function Shop() {
                 <b>blu zaffiro</b> e il <b>blu delle profondità del mare.</b>
                 Che lo si voglia chiamare  <b> Blu Avatar</b> o <b> Blu Klein</b> il colore che vediamo sui costumi di quest’estate è <b> acceso, frizzante</b>
                 e strizza l’occhio al <b> blu elettrico.</b>
-                <h1 className='font-semibold'>-Verde Avocado</h1>
+                <p className='font-semibold'>-Verde Avocado</p>
                 Fatto il cambio dell’armadio abbiamo, abbiamo salutato le tonalità scure del verde per lasciare spazio a <b> tinte</b>più <b>chiare e vivaci.</b>
                 Tra queste spicca il <b>verde avocado</b>che tanto piace, soprattutto quanto <b>vira verso</b> il <b>giallo</b>ino ad arrivare a 
                  <b>tinte leggermente neon.</b> Quale colore migliore per un <b>bikini </b> da abbinare all' <b>abbronzatura?</b>
                 </p>
                 <p>
-                     E tu, hai già scelto il tuo<b>costume preferito</b>per quest’estate? {' '}
+                      E tu, hai già scelto il tuo<b>costume preferito</b>per quest’estate? {' '}
                      Noi di <b>So What</b> ne abbiamo per <b>tutti i gusti;</b> dai un occhio alla nostra <b>collezione </b>
                      <Link href="#" className="text-red-500 font-bold underline">
                        POP GELATO!
