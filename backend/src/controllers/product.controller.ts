@@ -50,7 +50,41 @@ export const addMultipleProducts = asyncHandler(async (req: Request, res: Respon
         throw new ApiError(400, "No products provided.");
     }
 
-    const createdProducts = await Product.insertMany(req.body);
+    const createdProducts = [];
+
+    for (const product of products) {
+        if ([product.name, product.description, product.size, product.price, product.quantity, product.category].some((field) => !field)) {
+            throw new ApiError(400, "All fields are required.");
+        }
+
+        // TODO: Save image
+
+        const existingCategory = await Category.findOne({ _id: product.category }, { _id: 1 }).lean();
+
+        if (!existingCategory) {
+            throw new ApiError(404, "Category not found.");
+        }
+
+        const customSlug = product.name.toLowerCase().replace(/ /g, "-") + "-" + Date.now();
+
+        const newProduct = await Product.create({
+            name: product.name,
+            slug: customSlug,
+            description: product.description,
+            category: product.category,
+            size: product.size,
+            price: product.price,
+            quantity: product.quantity,
+            isFeatured: product.isFeatured,
+            onSale: product.onSale
+        })
+
+        if (!newProduct) {
+            throw new ApiError(500, "Failed to create product.");
+        }
+
+        createdProducts.push(newProduct);
+    }
 
     res.status(201).json(
         new ApiResponse(
@@ -170,4 +204,42 @@ export const getFeaturedProducts = asyncHandler(async (req: Request, res: Respon
             "Featured products fetched successfully."
         )
     );
+});
+
+export const getOnSaleProducts = asyncHandler(async (req: Request, res: Response): Promise<void> => {
+    const onSaleProducts = await Product.find({ onSale: true }).populate("category", "name, slug").lean();
+
+    if (!onSaleProducts || onSaleProducts.length === 0) {
+        throw new ApiError(404, "No on sale products found.");
+    }
+
+    res.status(200).json(
+        new ApiResponse(
+            200,
+            onSaleProducts,
+            "On sale products fetched successfully."
+        )
+    );
+});
+
+export const getProductsByCategory = asyncHandler(async (req: Request, res: Response): Promise<void> => {
+    const { id: categoryId } = req.params;
+
+    if (!categoryId) {
+        throw new ApiError(400, "Category is required")
+    }
+
+    const products = await Product.find({ category: categoryId }).populate("category", "name slug").lean();
+
+    if (!products || products.length === 0) {
+        throw new ApiError(404, "No products found")
+    }
+
+    res.status(200).json(
+        new ApiResponse(
+            200,
+            products,
+            "Products fetched successfully."
+        )
+    )
 });

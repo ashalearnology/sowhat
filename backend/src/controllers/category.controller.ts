@@ -65,15 +65,27 @@ export const getCategoryById = asyncHandler(async (req: Request, res: Response):
 });
 
 export const updateCategory = asyncHandler(async (req: Request, res: Response): Promise<void> => {
-    const category = req.body;
+    const { name, description } = req.body;
 
-    const existingCategory = await Category.findOne({ name: category.name }, { _id: 1 }).lean();
+    const existingCategory = await Category.findOne({ name }, { _id: 1 }).lean();
 
     if (existingCategory && existingCategory._id.toString() !== req.params.id) {
         throw new ApiError(400, "Category already exists.");
     }
 
-    const updatedCategory = await Category.findByIdAndUpdate(req.params.id, { ...category, slug: category.name.toLowerCase().replace(/ /g, "-") }, { new: true });
+    const updatedSlug = name && name.toLowerCase().replace(/ /g, "-") + "-" + Date.now();
+
+    const updatedCategory = await Category.findByIdAndUpdate(
+        req.params.id,
+        {
+            $set: {
+                name,
+                description,
+                slug: updatedSlug
+            }
+        },
+        { new: true }
+    );
 
     if (!updatedCategory) {
         throw new ApiError(404, "Category not found.");
