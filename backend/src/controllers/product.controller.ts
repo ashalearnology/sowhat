@@ -243,3 +243,30 @@ export const getProductsByCategory = asyncHandler(async (req: Request, res: Resp
         )
     )
 });
+
+export const searchProducts = asyncHandler(async (req: Request, res: Response): Promise<void> => {
+    const { query } = req.query;
+
+    if (!query) {
+        throw new ApiError(400, "Search query is required");
+    }
+
+    const products = await Product.find({
+        $or: [
+            { name: { $regex: query, $options: "i" } },
+            { description: { $regex: query, $options: "i" } }
+        ]
+    }).populate("category", "name slug").lean();
+
+    if (!products || products.length === 0) {
+        throw new ApiError(404, "No products found");
+    }
+
+    res.status(200).json(
+        new ApiResponse(
+            200,
+            products,
+            "Products fetched successfully."
+        )
+    );
+})

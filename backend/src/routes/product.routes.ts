@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addMultipleProducts, addProduct, deleteProduct, getFeaturedProducts, getOnSaleProducts, getProductById, getProducts, getProductsByCategory, updateProduct } from "../controllers/product.controller.ts";
+import { addMultipleProducts, addProduct, deleteProduct, getFeaturedProducts, getOnSaleProducts, getProductById, getProducts, getProductsByCategory, searchProducts, updateProduct } from "../controllers/product.controller.ts";
 import { authorizedRoles } from "../middlewares/authorizedRoles.middleware.ts";
 import { isLoggedIn } from "../middlewares/auth.middleware.ts";
 
@@ -14,6 +14,9 @@ router.route("/featured")
 
 router.route("/sale")
     .get(getOnSaleProducts);
+
+router.route("/search")
+    .get(searchProducts);
 
 router.route("/bulk")
     .post(isLoggedIn, authorizedRoles("admin"), addMultipleProducts);
