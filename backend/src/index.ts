@@ -29,10 +29,12 @@ app.use(morgan("dev"));
 import userRoutes from "./routes/user.routes.ts";
 import userAddressRoutes from "./routes/userAddress.routes.ts";
 import categoryRoutes from "./routes/category.routes.ts";
+import productRoutes from "./routes/product.routes.ts";
 
 app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/address", userAddressRoutes);
 app.use("/api/v1/category", categoryRoutes);
+app.use("/api/v1/product", productRoutes);
 
 // Error Handler
 app.use(errorHandler);
