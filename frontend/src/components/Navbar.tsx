@@ -81,7 +81,7 @@ const Navbar = () => {
               <Swimdown />
             </li>
             <li>
-              <Link href={'/sustainability'}>SUSTAINABILITY</Link>
+              <Link href={'/sustance'}>SUSTAINABILITY</Link>
             </li>
             <li>
               <Link href={'/wishlist'}>My WISHLIST</Link>
@@ -138,7 +138,7 @@ const Navbar = () => {
             <Swimdown />
           </li>
           <li>
-            <Link href={'/sustainability'} onClick={() => setMenuOpen(false)}>
+            <Link href={'/sustance'} onClick={() => setMenuOpen(false)}>
               SUSTAINABILITY
             </Link>
           </li>
