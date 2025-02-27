@@ -46,7 +46,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="w-full min-h-[55px] flex flex-row items-center justify-between py-3 px-4 lg:px-0 relative z-[100]">
+      <div className="w-full min-h-[55px] flex flex-row items-center justify-between py-3 px-4 lg:px-0 relative z-10">
         <div className="lg:hidden absolute left-4 top-1/2 transform -translate-y-1/2">
           <div
             ref={menuIconRef}
