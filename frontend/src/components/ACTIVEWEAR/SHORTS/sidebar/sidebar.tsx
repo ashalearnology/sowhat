@@ -7,9 +7,9 @@ import { MdOutlineEuroSymbol } from 'react-icons/md';
 import { IoMdClose } from 'react-icons/io'; // Import IoMdClose here
 
 const Sportss_accordion = () => {
-  const [selectedSizes, setSelectedSizes] = useState([]);
+  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
 
-  const toggleSize = (size) => {
+  const toggleSize = (size: string) => {
     setSelectedSizes(
       (prevSizes) =>
         prevSizes.includes(size)
@@ -134,9 +134,9 @@ const Sportss_accordion = () => {
     },
   ];
 
-  const [activeIndexes, setActiveIndexes] = useState([]);
+  const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
 
-  const toggleAccordion = (index) => {
+  const toggleAccordion = (index: number) => {
     setActiveIndexes((prevIndexes) =>
       prevIndexes.includes(index)
         ? prevIndexes.filter((i) => i !== index)
@@ -144,7 +144,7 @@ const Sportss_accordion = () => {
     );
   };
 
-  const closeSidebar = (index) => {
+  const closeSidebar = (index: number) => {
     setActiveIndexes((prevIndexes) => prevIndexes.filter((i) => i !== index)); 
   };
 

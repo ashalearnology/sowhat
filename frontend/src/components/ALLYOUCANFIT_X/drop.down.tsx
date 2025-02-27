@@ -38,9 +38,9 @@ const sections = [
 ];
 
 const Allyoucanfit_x_drop_down = () => {
-  const [openSection, setOpenSection] = useState(null);
+  const [openSection, setOpenSection] = useState<number | null>(null);
 
-  const toggleSection = (index) => {
+  const toggleSection = (index: number) => {
     setOpenSection(openSection === index ? null : index);
   };
 
