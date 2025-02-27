@@ -4,17 +4,16 @@
 import { useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 import { MdOutlineEuroSymbol } from 'react-icons/md';
-import { IoMdClose } from 'react-icons/io'; 
+import { IoMdClose } from 'react-icons/io';
 
 const Slider_slider = () => {
-  const [selectedSizes, setSelectedSizes] = useState([]);
+  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
 
-  const toggleSize = (size) => {
-    setSelectedSizes(
-      (prevSizes) =>
-        prevSizes.includes(size)
-          ? prevSizes.filter((s) => s !== size) 
-          : [...prevSizes, size],
+  const toggleSize = (size: string) => {
+    setSelectedSizes((prevSizes) =>
+      prevSizes.includes(size)
+        ? prevSizes.filter((s) => s !== size)
+        : [...prevSizes, size],
     );
   };
 
@@ -134,9 +133,9 @@ const Slider_slider = () => {
     },
   ];
 
-  const [activeIndexes, setActiveIndexes] = useState([]);
+  const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
 
-  const toggleAccordion = (index) => {
+  const toggleAccordion = (index: number) => {
     setActiveIndexes((prevIndexes) =>
       prevIndexes.includes(index)
         ? prevIndexes.filter((i) => i !== index)
@@ -144,70 +143,71 @@ const Slider_slider = () => {
     );
   };
 
-  const closeSidebar = (index) => {
+  const closeSidebar = (index: number) => {
     setActiveIndexes((prevIndexes) => prevIndexes.filter((i) => i !== index));
-  return (
-    <div className="md:w-1/4">
-      <div className="flex-col ml-0 mt-10 outline-none max-lg:hidden">
-        {sections.map((section, index) => (
-          <div key={index} className="mb-2 group px-4">
-            <button
-              className="w-full text-left px-4 py-2 flex justify-between font-medium border-b-2 outline-none transition-all"
-              onClick={() => toggleAccordion(index)}
-            >
-              {section.title}
-              <IoIosArrowForward
-                className={`cursor-pointer transform duration-300 transition-transform text-gray-300 ${
-                  activeIndexes.includes(index) ? 'rotate-90' : ''
+    return (
+      <div className="md:w-1/4">
+        <div className="flex-col ml-0 mt-10 outline-none max-lg:hidden">
+          {sections.map((section, index) => (
+            <div key={index} className="mb-2 group px-4">
+              <button
+                className="w-full text-left px-4 py-2 flex justify-between font-medium border-b-2 outline-none transition-all"
+                onClick={() => toggleAccordion(index)}
+              >
+                {section.title}
+                <IoIosArrowForward
+                  className={`cursor-pointer transform duration-300 transition-transform text-gray-300 ${
+                    activeIndexes.includes(index) ? 'rotate-90' : ''
+                  }`}
+                />
+              </button>
+              <div
+                className={`px-4 py-2 bg-white transition-all overflow-hidden ${
+                  activeIndexes.includes(index) ? 'block' : 'hidden'
                 }`}
-              />
-            </button>
-            <div
-              className={`px-4 py-2 bg-white transition-all overflow-hidden ${
-                activeIndexes.includes(index) ? 'block' : 'hidden'
-              }`}
-            >
-              {section.content}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Second div */}
-      <div className=" md:w-full py-2 flex gap-2 lg:hidden px-5 overflow-x-scroll">
-        {sections.map((section, index) => (
-          <div key={index} className="mb-2 group px-4 border ">
-            <button
-              className="  w-full text-left py-2 flex justify-between font-medium transition-all"
-              onClick={() => toggleAccordion(index)} 
-            >
-              {section.title}
-              <IoIosArrowForward
-                className={`cursor-pointer transform duration-300 transition-transform text-gray-300 ${
-                  activeIndexes.includes(index) ? 'rotate-90' : ''
-                }`}
-              />
-            </button>
-            {activeIndexes.includes(index) && (
-              <div className="lg:hidden flex h-screen w-72 absolute bg-slate-100 top-0 right-0 z-50">
-                <div className="min-w-full px-4 py-2 flex-col gap-12 bg-white transition-all overflow-hidden">
-                  <div className="flex justify-between items-center">
-                    <div className="font-semibold text-2xl">
-                      {section.title}
-                    </div>
-                    <button onClick={() => closeSidebar(index)}>
-                      <IoMdClose className="text-xl text-gray-600" />
-                    </button>
-                  </div>
-                  <div>{section.content}</div>
-                </div>
+              >
+                {section.content}
               </div>
-            )}
-          </div>
-        ))}
+            </div>
+          ))}
+        </div>
+
+        {/* Second div */}
+        <div className=" md:w-full py-2 flex gap-2 lg:hidden px-5 overflow-x-scroll">
+          {sections.map((section, index) => (
+            <div key={index} className="mb-2 group px-4 border ">
+              <button
+                className="  w-full text-left py-2 flex justify-between font-medium transition-all"
+                onClick={() => toggleAccordion(index)}
+              >
+                {section.title}
+                <IoIosArrowForward
+                  className={`cursor-pointer transform duration-300 transition-transform text-gray-300 ${
+                    activeIndexes.includes(index) ? 'rotate-90' : ''
+                  }`}
+                />
+              </button>
+              {activeIndexes.includes(index) && (
+                <div className="lg:hidden flex h-screen w-72 absolute bg-slate-100 top-0 right-0 z-50">
+                  <div className="min-w-full px-4 py-2 flex-col gap-12 bg-white transition-all overflow-hidden">
+                    <div className="flex justify-between items-center">
+                      <div className="font-semibold text-2xl">
+                        {section.title}
+                      </div>
+                      <button onClick={() => closeSidebar(index)}>
+                        <IoMdClose className="text-xl text-gray-600" />
+                      </button>
+                    </div>
+                    <div>{section.content}</div>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 };
 
 export default Slider_slider;
