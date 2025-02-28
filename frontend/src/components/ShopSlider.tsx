@@ -1,5 +1,4 @@
 /** @format */
-
 'use client';
 
 import React, { useState } from 'react';
@@ -7,6 +6,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { GiMatterStates } from 'react-icons/gi';
 
 const ImageSlider = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -31,6 +31,7 @@ const ImageSlider = () => {
       text: 'ALLYOUCANFIT X NICOLE SHORTS BRA',
       protext: '€60,00',
     },
+
     {
       url: '/images/home/hover4.jpg',
       hoverUrl: '/images/home/hover04.png',
@@ -43,7 +44,7 @@ const ImageSlider = () => {
       text: 'ALLYOUCANFIT X LYLA BODYSUIT',
       protext: '€60,00',
     },
-    {
+    { 
       url: '/images/home/hover6.jpg',
       hoverUrl: '/images/home/hover06.png',
       text: 'ALLYOUCANFIT X SERENA MESH LEGGINGS',
@@ -94,7 +95,7 @@ const ImageSlider = () => {
       <FaArrowRight size={20} />
     </button>
   );
-
+   
   const settings = {
     dots: false,
     infinite: false,
@@ -127,7 +128,7 @@ const ImageSlider = () => {
               className="w-[27.5rem] h-[41.25rem] object-cover transition-all duration-300"
               loading="lazy"
             />
-
+             
             <h2 className="text-sm font-bold mt-5">{slide.text}</h2>
             <p className="text-sm text-gray-500 font-bold mt-1">
               {slide.protext}

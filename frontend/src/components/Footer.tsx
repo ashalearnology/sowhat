@@ -121,11 +121,10 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
+      
         <div className="text-center flex items-center justify-center">
           <hr className="border-[#1b1b1b] w-full" />
-        </div>
-                  
+        </div> 
         <div className="max-w-full flex items-center justify-center">
           <div className="py-4 w-full max-w-[1400px] flex flex-col md:flex-row items-center justify-between">
             {/* Left Side: Language, Currency */}
