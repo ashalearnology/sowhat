@@ -98,7 +98,7 @@ const Footer = () => {
             </div>
 
             {/* Links & Newsletter Section */}
-            <div className='flex flex-wrap md:flex-nowrap w-full md:w-auto justify-between gap-12'>
+            <div className='flex flex-wrap  md:flex-nowrap md:w-auto justify-between gap-6 sm:gap-12'>
               {/* SHOP */}
               <div className='flex flex-col gap-3 w-[45%] md:w-auto'>
                 <span className='text-[12px] text-[#5c5c5c] font-bold'>
@@ -135,7 +135,7 @@ const Footer = () => {
                 </span>
                 <div className='flex flex-col gap-5 text-sm font-bold'>
                   <span>Subscribe for store updates and discounts.</span>
-                  <div className='flex items-center border border-[#1B1B1B] px-4 py-3 w-full md:w-[320px] lg:w-[380px] rounded-full'>
+                  <div className='flex items-center border border-[#1B1B1B] px-4 py-3 w-full md:w-[300px] lg:w-[380px] rounded-full'>
                     <input
                       type='text'
                       placeholder='Email address'
