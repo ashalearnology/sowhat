@@ -92,6 +92,32 @@ const ImageSlider = () => {
     arrows: true,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
+    responsive: [
+      {
+        breakpoint: 1024, // Tablets
+        settings: {
+          slidesToShow: 2.3,
+          slidesToScroll: 1,
+          arrows: true,
+        },
+      },
+      {
+        breakpoint: 768, // Mobile Landscape
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1,
+          arrows: false, // Hide arrows for cleaner UI
+        },
+      },
+      {
+        breakpoint: 480, // Mobile Portrait
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false, // Hide arrows for small screens
+        },
+      },
+    ],
   };
 
   return (

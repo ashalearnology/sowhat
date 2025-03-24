@@ -71,18 +71,57 @@ const ImageSlider = () => {
     </button>
   );
 
+  // const settings = {
+  //   dots: false,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 3.3,
+  //   slidesToScroll: 1,
+  //   // autoplay: true,
+  //   autoplaySpeed: 3000,
+  //   arrows: true,
+  //   prevArrow: <CustomPrevArrow />,
+  //   nextArrow: <CustomNextArrow />,
+  // };
+
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3.3,
+    slidesToShow: 3.3, // Default for larger screens
     slidesToScroll: 1,
-    // autoplay: true,
     autoplaySpeed: 3000,
     arrows: true,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
+    responsive: [
+      {
+        breakpoint: 1024, // Tablets & small laptops
+        settings: {
+          slidesToShow: 2.5, 
+          slidesToScroll: 1,
+          arrows: true,
+        }
+      },
+      {
+        breakpoint: 768, // Mobile landscape
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1,
+          arrows: false, // Hides arrows on smaller screens
+        }
+      },
+      {
+        breakpoint: 480, // Mobile portrait
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+        }
+      }
+    ]
   };
+  
 
   return (
     <div

@@ -16,15 +16,33 @@ ol {
 .bg-hero {
   position: relative;
   width: 100%;
-  height: 85vh;
+  height: 85vh; /* Default height */
   background-image: url('/images/home/hero.jpg');
-  /* background-position: center; */
   background-repeat: no-repeat;
   background-size: cover;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
+  /* background-position: center;  */
 }
+
+/* Adjust height for smaller screens */
+@media (max-width: 1024px) {
+  .bg-hero {
+    height: 75vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .bg-hero {
+    height: 60vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .bg-hero {
+    height: 50vh; /* Reduce height on smaller screens */
+    background-position: top center; /* Adjust focus for mobile */
+  }
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
