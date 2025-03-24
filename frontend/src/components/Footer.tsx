@@ -135,7 +135,7 @@ const Footer = () => {
                 </span>
                 <div className='flex flex-col gap-5 text-sm font-bold'>
                   <span>Subscribe for store updates and discounts.</span>
-                  <div className='flex items-center border border-[#1B1B1B] px-4 py-3 w-full md:w-[410px] rounded-full'>
+                  <div className='flex items-center border border-[#1B1B1B] px-4 py-3 w-full md:w-[320px] lg:w-[380px] rounded-full'>
                     <input
                       type='text'
                       placeholder='Email address'
