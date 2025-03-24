@@ -97,25 +97,25 @@ const Shop_carts = () => {
   ];
 
   return (
-    <div className=" p-8  w-3/4 overflow-hidden flex flex-col max-md:w-full">
-      <div className="">
+    <div className="p-4 sm:px-8 sm:py-4  xl:w-3/4 overflow-hidden flex flex-col w-full">
+      <div>
         <ul className="flex gap-6 max-lg:justify-center flex-wrap max-sm:w-full">
           {Cartsdetails.map((item, index) => (
             <li
               key={index}
-              className="w-[30%] flex-grow max-sm:w-full max-lg:w-64 flex-shrink-0 "
+              className="w-[30%] flex-grow max-sm:w-full max-md:w-64 flex-shrink-0 "
             >
-              <div className=" bg-gray-1s00 shadow-lg relative group rounded-2xl flex-wrap ">
+              <div className=" bg-gray-1s00 shadow-lg relative group rounded-lg sm:rounded-xl flex-wrap ">
                 <img
                   src={item.imag1}
                   alt={item.name}
-                  className="w-full object-cover h-full absolute top-0 transition-opacity duration-500 group-hover:opacity-0 rounded-2xl"
+                  className="w-full object-cover h-full absolute top-0 transition-opacity duration-500 group-hover:opacity-0 rounded-lg sm:rounded-2xl"
                 ></img>
 
                 <img
                   src={item.imag2}
                   alt={item.name}
-                  className="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-100 rounded-2xl"
+                  className="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-100 rounded-xl"
                 ></img>
               </div>
               <div className="flex flex-col gap-1 m-2 flex-wrap">
