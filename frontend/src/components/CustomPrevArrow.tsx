@@ -106,7 +106,7 @@ const ImageSlider = () => {
       {
         breakpoint: 768, // Mobile landscape
         settings: {
-          slidesToShow: 1.5,
+          slidesToShow: 1,
           slidesToScroll: 1,
           arrows: false, // Hides arrows on smaller screens
         }
@@ -139,8 +139,8 @@ const ImageSlider = () => {
               loading="lazy"
             />
 
-            <h2 className="text-sm font-bold mt-5">{slide.text}</h2>
-            <p className="text-sm text-gray-500  font-bold mt-1">
+            <h2 className="max-lg:text-center text-sm font-bold mt-5">{slide.text}</h2>
+            <p className="max-lg:text-center text-sm text-gray-500  font-bold mt-1">
               {slide.protext}
             </p>
           </div>

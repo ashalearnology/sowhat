@@ -5,9 +5,9 @@ import React from 'react';
 const Hero = () => {
   return (
     <>
-      <section className="bg-hero ">
-        <div className=" px-24 py-24">
-          <div className="flex flex-col gap-3">
+      <section className="bg-hero flex items-center">
+        <div className="first_text  px-24 py-24">
+          <div className="flex flex-col  sm:gap-3">
             <span className="text-xs text-white font-bold ">
               BY NADIA & ARINA
             </span>

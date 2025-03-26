@@ -10,7 +10,7 @@ const Seen = () => {
         <div className="text-center  tracking-wider flex flex-col items-center justify-center gap-4">
           <h1 className="text-xs font-bold">FEATURED</h1>
           <h2 className="text-3xl font-bold tracking-widest">AS SEEN IN</h2>
-          <h1 className="tracking-wider  mx-auto	font-bold w-[450px]">
+          <h1 className="tracking-wider  mx-auto	font-bold max-w-[450px]">
             Here's what the best have to say about your new favorite brand.
           </h1>
         </div>

@@ -83,7 +83,7 @@ const ImageSlider = () => {
       {
         breakpoint: 768, // Mobile Landscape
         settings: {
-          slidesToShow: 1.5,
+          slidesToShow: 1,
           slidesToScroll: 1,
           arrows: false, // Hide arrows for cleaner UI
         },
