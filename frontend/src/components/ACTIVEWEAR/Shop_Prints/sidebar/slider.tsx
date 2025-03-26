@@ -130,7 +130,7 @@ const Sliderslider = () => {
   ];
 
   return (
-    <div className="md:w-1/4">
+    <div className="lg:w-1/4">
       {/* Sidebar for larger screens */}
       <div className="flex-col ml-0 mt-10 outline-none max-lg:hidden">
         {sections.map((section, index) => (

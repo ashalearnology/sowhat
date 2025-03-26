@@ -100,15 +100,15 @@ const Shop_body = () => {
   ];
 
   return (
-    <div className=" p-8  w-3/4 overflow-hidden flex flex-col max-md:w-full">
+    <div className="w-full lg:w-3/4 p-4 overflow-hidden flex flex-col">
       <div className="">
-        <ul className="flex gap-6 max-lg:justify-center flex-wrap max-sm:w-full">
+        <ul className="flex gap-6 max-lg:justify-center flex-wrap w-full">
           {Cartsdetails.map((item, index) => (
             <li
               key={index}
-              className="w-[30%] flex-grow max-sm:w-full max-lg:w-64 flex-shrink-0 "
+              className="md:w-[30%] flex-grow w-full max-lg:w-64 flex-shrink-0 "
             >
-              <div className=" h-[550px] bg-gray-1s00 shadow-lg relative group rounded-2xl flex-wrap ">
+              <div className="h-[400px] sm:h-[550px] bg-gray-1s00 shadow-lg relative group rounded-2xl flex-wrap ">
                 <img
                   src={item.imag1}
                   alt={item.name}
