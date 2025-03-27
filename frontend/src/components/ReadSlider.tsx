@@ -87,6 +87,32 @@ const ImageSlider = () => {
     arrows: true,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
+    responsive: [
+      {
+        breakpoint: 1024, // Tablets & small laptops
+        settings: {
+          slidesToShow: 2, 
+          slidesToScroll: 1,
+          arrows: true,
+        }
+      },
+      {
+        breakpoint: 768, // Mobile landscape
+        settings: {
+          slidesToShow: 1.1,
+          slidesToScroll: 1,
+          arrows: false, // Hides arrows on smaller screens
+        }
+      },
+      {
+        breakpoint: 480, // Mobile portrait
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+        }
+      }
+    ]
   };
 
   return (
@@ -97,7 +123,7 @@ const ImageSlider = () => {
     >
       <Slider {...settings}>
         {slides.map((slide, index) => (
-          <div key={index} className="relative  min-h-[51.875rem]">
+          <div key={index} className="relative min-h-[51.875rem]">
             <a href={slide.path}>
               <img
                 src={slide.url}
@@ -106,9 +132,9 @@ const ImageSlider = () => {
                 loading="lazy"
               />
             </a>
-            <div className="text-center tracking-wider mx-auto flex flex-col items-center gap-4	py-14">
+            <div className="text-center md:tracking-wider mx-auto flex flex-col items-center gap-2 lg:gap-4 py-2	lg:py-14">
               <h1 className="text-xs  font-bold">{slide.text}</h1>
-              <h2 className="text-3xl font-bold tracking-widest max-w-[31.25rem]">
+              <h2 className="text-2xl lg:text-3xl font-bold tracking-widest max-w-[31.25rem]">
                 {slide.head}
               </h2>
               <h1 className="mb-4 tracking-wider	font-bold max-w-[31.25rem]">

@@ -109,7 +109,7 @@ const ImageSlider = () => {
       {
         breakpoint: 1024, // Tablets & small laptops
         settings: {
-          slidesToShow: 2.5, 
+          slidesToShow: 1, 
           slidesToScroll: 1,
           arrows: true,
         }
@@ -150,7 +150,7 @@ const ImageSlider = () => {
             <img
               src={hoveredIndex === index ? slide.hoverUrl : slide.url}
               alt={`Slide ${index + 1}`}
-              className=" w-[27.5rem] h-[41.25rem] object-cover transition-all duration-300"
+              className="w-full lg:w-[27.5rem] h-[60rem] lg:h-[41.25rem] object-cover transition-all duration-300"
               loading="lazy"
             />
 

@@ -33,6 +33,14 @@ ol {
   }
 }
 
+@media (min-width:786) and (max-width:1024px)
+{
+  .bg-hero{
+    background-position: center;
+    width: 100vw;
+  }
+}
+
 @media (max-width: 768px) {
   .bg-hero {
     height: 60vh;
