@@ -8,7 +8,7 @@ const Sportss = () => {
   return (
     <div>
       <Sportss_collection />
-      <div className="flex flex-row justify-center mx-auto w-full max-lg:flex-col">
+      <div className="flex justify-center mx-auto 2xl:px-10 w-full max-lg:flex-col">
         <Sportss_accordion />
         <Sportss_carts />
       </div>
