@@ -8,7 +8,7 @@ const Sports_Bra = () => {
   return (
     <div>
       <Sports_bra_collection />
-      <div className="flex flex-row justify-center mx-auto w-full max-lg:flex-col">
+      <div className="flex justify-center mx-auto 2xl:px-10 w-full max-lg:flex-col">
         <Sport_bra_accordion />
         <Shop_bra_carts />
       </div>

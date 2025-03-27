@@ -8,7 +8,7 @@ const Shop_all_index = () => {
   return (
     <div>
       <Shop_all_collection />
-      <div className="flex flex-row justify-center mx-auto w-full max-lg:flex-col">
+      <div className="flex justify-center mx-auto 2xl:px-10 w-full max-lg:flex-col">
         <Shop_all_slider />
         <Shop_all_body />
       </div>
