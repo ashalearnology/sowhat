@@ -45,7 +45,7 @@ const Activedown = () => {
           {[
             { name: 'ACTIVEWEAR', path: '/home' },
             { name: 'THE BLACK EDIT', path: '/the_black_edit' },
-            { name: 'Allyoucanfit X SW', path: '/Allyoucanfit_x' },
+            { name: 'Allyoucanfit X SW', path: '/Allyoucanfit' },
             { name: 'Shop Prints', path: '/Shop' },
             { name: 'SHOP ALL', path: '/shop_all' },
             { name: 'SPORTS BRA', path: '/sport_bra' },
