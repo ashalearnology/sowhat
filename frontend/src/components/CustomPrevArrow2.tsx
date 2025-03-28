@@ -92,6 +92,32 @@ const ImageSlider = () => {
     arrows: true,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
+    responsive: [
+      {
+        breakpoint: 1024, // Tablets
+        settings: {
+          slidesToShow: 2.3,
+          slidesToScroll: 1,
+          arrows: true,
+        },
+      },
+      {
+        breakpoint: 768, // Mobile Landscape
+        settings: {
+          slidesToShow: 1.6,
+          slidesToScroll: 1,
+          arrows: false, // Hide arrows for cleaner UI
+        },
+      },
+      {
+        breakpoint: 480, // Mobile Portrait
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false, // Hide arrows for small screens
+        },
+      },
+    ],
   };
 
   return (
@@ -110,8 +136,8 @@ const ImageSlider = () => {
               loading="lazy"
             />
 
-            <h2 className="text-sm font-bold mt-5">{slide.text}</h2>
-            <p className="text-sm text-gray-500  font-bold mt-1">
+            <h2 className=" max-lg:text-center text-sm font-bold mt-5">{slide.text}</h2>
+            <p className="max-lg:text-center text-sm text-gray-500  font-bold mt-1">
               {slide.protext}
             </p>
           </div>

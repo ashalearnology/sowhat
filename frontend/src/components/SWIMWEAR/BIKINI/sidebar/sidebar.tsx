@@ -7,10 +7,10 @@ import { MdOutlineEuroSymbol } from 'react-icons/md';
 import { IoMdClose } from 'react-icons/io';
 
 const Bikine_slider = () => {
-  const [selectedSizes, setSelectedSizes] = useState([]);
+  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
 
-  const toggleSize = (size) => {
-    setSelectedSizes((prevSizes) =>
+  const toggleSize = (size: string) => {
+    setSelectedSizes((prevSizes: string[]) =>
       prevSizes.includes(size)
         ? prevSizes.filter((s) => s !== size)
         : [...prevSizes, size],
@@ -133,9 +133,9 @@ const Bikine_slider = () => {
     },
   ];
 
-  const [activeIndexes, setActiveIndexes] = useState([]);
+  const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
 
-  const toggleAccordion = (index) => {
+  const toggleAccordion = (index: number) => {
     setActiveIndexes((prevIndexes) =>
       prevIndexes.includes(index)
         ? prevIndexes.filter((i) => i !== index)
@@ -143,7 +143,7 @@ const Bikine_slider = () => {
     );
   };
 
-  const closeSidebar = (index) => {
+  const closeSidebar = (index: number) => {
     setActiveIndexes((prevIndexes) => prevIndexes.filter((i) => i !== index));
   };
 

@@ -7,8 +7,8 @@ import Link from 'next/link';
 
 // Main component
 const Allyoucanfit_img_sildbar = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
-  const [selectedSize, setSelectedSize] = useState(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   const arr = [
     {
@@ -38,11 +38,11 @@ const Allyoucanfit_img_sildbar = () => {
   // Size options
   const sizes = ['S', 'M', 'L', 'XL', '2XL'];
 
-  const handleImageClick = (index) => {
+  const handleImageClick = (index: number) => {
     setActiveIndex(index === activeIndex ? null : index);
   };
 
-  const handleSizeSelect = (index) => {
+  const handleSizeSelect = (index: string) => {
     setSelectedSize(index);
   };
 

@@ -4,43 +4,38 @@
 import { useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 import { MdOutlineEuroSymbol } from 'react-icons/md';
-import { IoMdClose } from 'react-icons/io'; 
+import { IoMdClose } from 'react-icons/io';
 
-const Slider_slider = () => {
-  const [selectedSizes, setSelectedSizes] = useState([]);
+const Sliderslider = () => {
+  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
+  const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
+  const [openSidebarIndex, setOpenSidebarIndex] = useState<number | null>(null);
 
-  const toggleSize = (size) => {
-    setSelectedSizes(
-      (prevSizes) =>
-        prevSizes.includes(size)
-          ? prevSizes.filter((s) => s !== size) 
-          : [...prevSizes, size],
+  const toggleSize = (size: string) => {
+    setSelectedSizes((prevSizes) =>
+      prevSizes.includes(size)
+        ? prevSizes.filter((s) => s !== size)
+        : [...prevSizes, size],
     );
   };
 
+  const toggleAccordion = (index: number) => {
+    setActiveIndexes((prevIndexes) =>
+      prevIndexes.includes(index)
+        ? prevIndexes.filter((i) => i !== index)
+        : [...prevIndexes, index],
+    );
+  };
+
+  const openSidebar = (index: number) => {
+    setOpenSidebarIndex(index);
+  };
+
+  const closeSidebar = () => {
+    setOpenSidebarIndex(null);
+  };
+
   const sections = [
-    // {
-    //   title: 'Product',
-    //   content: (
-    //     <ul>
-    //       {[
-    //         { name: 'Bodysuit', qty: 1 },
-    //         { name: 'Leggings', qty: 10 },
-    //         { name: 'Short', qty: 3 },
-    //         { name: 'Sports Bra', qty: 7 },
-    //         { name: 'Top', qty: 3 },
-    //       ].map((item, index) => (
-    //         <li key={index} className="flex gap-2 items-center">
-    //           <input type="checkbox" />
-    //           <div className="flex justify-between w-full">
-    //             <span>{item.name}</span>
-    //             <span>{item.qty}</span>
-    //           </div>
-    //         </li>
-    //       ))}
-    //     </ul>
-    //   ),
-    // },
     {
       title: 'Availability',
       content: (
@@ -77,7 +72,6 @@ const Slider_slider = () => {
                   <p>{price}</p>
                 </div>
               ))}
-              <span className="mt-4"></span>
             </div>
           </li>
         </ul>
@@ -93,7 +87,9 @@ const Slider_slider = () => {
                 <button
                   onClick={() => toggleSize(size)}
                   className={`px-4 py-2 border rounded-md transition-all ${
-                    selectedSizes.includes(size) ? '' : ' border-gray-400'
+                    selectedSizes.includes(size)
+                      ? 'border-black'
+                      : 'border-gray-400'
                   }`}
                 >
                   {size}
@@ -104,7 +100,6 @@ const Slider_slider = () => {
         </ul>
       ),
     },
-
     {
       title: 'Sort',
       content: (
@@ -134,20 +129,9 @@ const Slider_slider = () => {
     },
   ];
 
-  const [activeIndexes, setActiveIndexes] = useState([]);
-
-  const toggleAccordion = (index) => {
-    setActiveIndexes((prevIndexes) =>
-      prevIndexes.includes(index)
-        ? prevIndexes.filter((i) => i !== index)
-        : [...prevIndexes, index],
-    );
-  };
-
-  const closeSidebar = (index) => {
-    setActiveIndexes((prevIndexes) => prevIndexes.filter((i) => i !== index));
   return (
-    <div className="md:w-1/4">
+    <div className="lg:w-1/4">
+      {/* Sidebar for larger screens */}
       <div className="flex-col ml-0 mt-10 outline-none max-lg:hidden">
         {sections.map((section, index) => (
           <div key={index} className="mb-2 group px-4">
@@ -173,41 +157,43 @@ const Slider_slider = () => {
         ))}
       </div>
 
-      {/* Second div */}
-      <div className=" md:w-full py-2 flex gap-2 lg:hidden px-5 overflow-x-scroll">
+      {/* Sidebar for mobile */}
+      <div className="md:w-full py-2 flex gap-2 lg:hidden px-5 overflow-x-scroll">
         {sections.map((section, index) => (
-          <div key={index} className="mb-2 group px-4 border ">
+          <div key={index} className="mb-2 group px-4 border">
             <button
-              className="  w-full text-left py-2 flex justify-between font-medium transition-all"
-              onClick={() => toggleAccordion(index)} 
+              className="w-full text-left py-2 flex justify-between font-medium transition-all"
+              onClick={() => openSidebar(index)}
             >
               {section.title}
               <IoIosArrowForward
                 className={`cursor-pointer transform duration-300 transition-transform text-gray-300 ${
-                  activeIndexes.includes(index) ? 'rotate-90' : ''
+                  openSidebarIndex === index ? 'rotate-90' : ''
                 }`}
               />
             </button>
-            {activeIndexes.includes(index) && (
-              <div className="lg:hidden flex h-screen w-72 absolute bg-slate-100 top-0 right-0 z-50">
-                <div className="min-w-full px-4 py-2 flex-col gap-12 bg-white transition-all overflow-hidden">
-                  <div className="flex justify-between items-center">
-                    <div className="font-semibold text-2xl">
-                      {section.title}
-                    </div>
-                    <button onClick={() => closeSidebar(index)}>
-                      <IoMdClose className="text-xl text-gray-600" />
-                    </button>
-                  </div>
-                  <div>{section.content}</div>
-                </div>
-              </div>
-            )}
           </div>
         ))}
       </div>
+
+      {/* Mobile Sidebar Modal */}
+      {openSidebarIndex !== null && (
+        <div className="fixed top-0 right-0 h-screen w-72 bg-slate-100 z-50 shadow-lg">
+          <div className="min-w-full px-4 py-2 flex flex-col gap-12 bg-white">
+            <div className="flex justify-between items-center">
+              <div className="font-semibold text-2xl">
+                {sections[openSidebarIndex].title}
+              </div>
+              <button onClick={closeSidebar}>
+                <IoMdClose className="text-xl text-gray-600" />
+              </button>
+            </div>
+            <div>{sections[openSidebarIndex].content}</div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-export default Slider_slider;
+export default Sliderslider;

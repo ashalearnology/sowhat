@@ -18,6 +18,7 @@ const ImageSlider = () => {
       url: '/images/home/read1.jpg',
       text: 'LETTURA DELLA SETTIMANA',
       head: 'MODA SOSTENIBLE - 5 CONSIGLI PER RICONOSCERE UN BRAND ETICO CHE FA TENDENZA',
+      path: '/read-more1',
       point:
         'Moda sostenibile e Fast Fashion; non è sempre facile riconoscerne le differenze. Ecco perché So What ha pensato a 5 consigli per uno shopping consapevole a prova di greenwashing!',
     },
@@ -25,12 +26,14 @@ const ImageSlider = () => {
       url: '/images/home/read2.png',
       text: 'LETTURA DELLA SETTIMANA',
       head: 'COSTUMI DA BAGNO 2023: LE TENDENZE PIÙ CALDE!',
+      path: '/read-more2',
       point: `Scopri le novità swimwear più calde dell'estate 2023 grazie ai migliori trend selezionati, per te, da So What!`,
     },
     {
       url: '/images/home/read3.jpg',
       text: 'LETTURA DELLA SETTIMANA',
       head: 'PLASTICA E RICICLO, IL PRIMO PASSO VERSO UNA MODA SOSTENIBILE',
+      // path: '/read-more2',
       point: `L'utilizzo della plastica è assai diffuso nel settore della moda per quanto riguarda la realizzazione di capi di abbigliamento.Il riutilizzo della plastica è però, per molte aziende, il primo, gr...`,
     },
     {
@@ -84,6 +87,32 @@ const ImageSlider = () => {
     arrows: true,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
+    responsive: [
+      {
+        breakpoint: 1024, // Tablets & small laptops
+        settings: {
+          slidesToShow: 2, 
+          slidesToScroll: 1,
+          arrows: true,
+        }
+      },
+      {
+        breakpoint: 768, // Mobile landscape
+        settings: {
+          slidesToShow: 1.1,
+          slidesToScroll: 1,
+          arrows: false, // Hides arrows on smaller screens
+        }
+      },
+      {
+        breakpoint: 480, // Mobile portrait
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+        }
+      }
+    ]
   };
 
   return (
@@ -94,18 +123,18 @@ const ImageSlider = () => {
     >
       <Slider {...settings}>
         {slides.map((slide, index) => (
-          <div key={index} className="relative  min-h-[51.875rem]">
-            <Link href={'/read-more'}>
+          <div key={index} className="relative min-h-[51.875rem]">
+            <a href={slide.path}>
               <img
                 src={slide.url}
                 alt={`Slide ${index + 1}, Slide ${index - 1}`}
                 className="w-[41.881rem] h-[27.923rem] object-center"
                 loading="lazy"
               />
-            </Link>
-            <div className="text-center tracking-wider mx-auto flex flex-col items-center gap-4	py-14">
+            </a>
+            <div className="text-center md:tracking-wider mx-auto flex flex-col items-center gap-2 lg:gap-4 py-2	lg:py-14">
               <h1 className="text-xs  font-bold">{slide.text}</h1>
-              <h2 className="text-3xl font-bold tracking-widest max-w-[31.25rem]">
+              <h2 className="text-2xl lg:text-3xl font-bold tracking-widest max-w-[31.25rem]">
                 {slide.head}
               </h2>
               <h1 className="mb-4 tracking-wider	font-bold max-w-[31.25rem]">

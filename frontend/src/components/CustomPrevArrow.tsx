@@ -71,18 +71,57 @@ const ImageSlider = () => {
     </button>
   );
 
+  // const settings = {
+  //   dots: false,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 3.3,
+  //   slidesToScroll: 1,
+  //   // autoplay: true,
+  //   autoplaySpeed: 3000,
+  //   arrows: true,
+  //   prevArrow: <CustomPrevArrow />,
+  //   nextArrow: <CustomNextArrow />,
+  // };
+
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3.3,
+    slidesToShow: 3.3, // Default for larger screens
     slidesToScroll: 1,
-    // autoplay: true,
     autoplaySpeed: 3000,
     arrows: true,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
+    responsive: [
+      {
+        breakpoint: 1024, // Tablets & small laptops
+        settings: {
+          slidesToShow: 2.5, 
+          slidesToScroll: 1,
+          arrows: true,
+        }
+      },
+      {
+        breakpoint: 768, // Mobile landscape
+        settings: {
+          slidesToShow: 1.6,
+          slidesToScroll: 1,
+          arrows: false, // Hides arrows on smaller screens
+        }
+      },
+      {
+        breakpoint: 480, // Mobile portrait
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+        }
+      }
+    ]
   };
+  
 
   return (
     <div
@@ -100,8 +139,8 @@ const ImageSlider = () => {
               loading="lazy"
             />
 
-            <h2 className="text-sm font-bold mt-5">{slide.text}</h2>
-            <p className="text-sm text-gray-500  font-bold mt-1">
+            <h2 className="max-lg:text-center text-sm font-bold mt-5">{slide.text}</h2>
+            <p className="max-lg:text-center text-sm text-gray-500  font-bold mt-1">
               {slide.protext}
             </p>
           </div>

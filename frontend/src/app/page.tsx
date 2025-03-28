@@ -1,8 +1,12 @@
 /** @format */
 import React from 'react';
-
+import Home from './home/page';
 const page = () => {
-  return <div>page</div>;
+  return (
+    <>
+      <Home />
+    </>
+  );
 };
 
 export default page;

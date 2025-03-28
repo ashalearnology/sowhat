@@ -65,15 +65,40 @@ const ImageSlider = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3.3,
+    slidesToShow: 3.3, // Default for large screens
     slidesToScroll: 1,
-    // autoplay: true,
     autoplaySpeed: 3000,
     arrows: true,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
+    responsive: [
+      {
+        breakpoint: 1024, // Tablets
+        settings: {
+          slidesToShow: 2.3,
+          slidesToScroll: 1,
+          arrows: true,
+        },
+      },
+      {
+        breakpoint: 768, // Mobile Landscape
+        settings: {
+          slidesToShow: 1.6,
+          slidesToScroll: 1,
+          arrows: false, // Hide arrows for cleaner UI
+        },
+      },
+      {
+        breakpoint: 480, // Mobile Portrait
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false, // Hide arrows for small screens
+        },
+      },
+    ],
   };
-
+  
   return (
     <div
       className="max-w-full mx-auto  relative"
@@ -86,7 +111,7 @@ const ImageSlider = () => {
             <img
               src={slide.url}
               alt={`Slide ${index + 1}, Slide ${index - 1}`}
-              className="max-w-[27.5rem] h-[27.5rem] object-cover"
+              className="w-[27.5rem] md:max-w-[27.5rem] h-[27.5rem] object-center md:object-cover"
               loading="lazy"
             />
           </div>

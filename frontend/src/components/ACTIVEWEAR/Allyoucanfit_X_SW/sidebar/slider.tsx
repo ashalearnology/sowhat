@@ -4,17 +4,16 @@
 import { useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 import { MdOutlineEuroSymbol } from 'react-icons/md';
-import { IoMdClose } from 'react-icons/io'; 
+import { IoMdClose } from 'react-icons/io';
 
 const Allyoucanfit_slider = () => {
-  const [selectedSizes, setSelectedSizes] = useState([]);
+  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
 
-  const toggleSize = (size) => {
-    setSelectedSizes(
-      (prevSizes) =>
-        prevSizes.includes(size)
-          ? prevSizes.filter((s) => s !== size) 
-          : [...prevSizes, size], 
+  const toggleSize = (size: string) => {
+    setSelectedSizes((prevSizes) =>
+      prevSizes.includes(size)
+        ? prevSizes.filter((s) => s !== size)
+        : [...prevSizes, size],
     );
   };
 
@@ -134,9 +133,9 @@ const Allyoucanfit_slider = () => {
     },
   ];
 
-  const [activeIndexes, setActiveIndexes] = useState([]);
+  const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
 
-  const toggleAccordion = (index) => {
+  const toggleAccordion = (index: number) => {
     setActiveIndexes((prevIndexes) =>
       prevIndexes.includes(index)
         ? prevIndexes.filter((i) => i !== index)
@@ -144,12 +143,12 @@ const Allyoucanfit_slider = () => {
     );
   };
 
-  const closeSidebar = (index) => {
-    setActiveIndexes((prevIndexes) => prevIndexes.filter((i) => i !== index)); 
+  const closeSidebar = (index: number) => {
+    setActiveIndexes((prevIndexes) => prevIndexes.filter((i) => i !== index));
   };
 
   return (
-    <div className="md:w-1/4">
+    <div className="lg:w-1/4">
       <div className="flex-col ml-0 mt-10 outline-none max-lg:hidden">
         {sections.map((section, index) => (
           <div key={index} className="mb-2 group px-4">
@@ -176,12 +175,12 @@ const Allyoucanfit_slider = () => {
       </div>
 
       {/* Second div */}
-      <div className=" md:w-full py-2 flex gap-2 lg:hidden px-5 overflow-x-scroll">
+      <div className="md:w-full py-2 flex gap-2 lg:hidden px-5 overflow-x-scroll">
         {sections.map((section, index) => (
           <div key={index} className="mb-2 group px-4 border ">
             <button
-              className="  w-full text-left py-2 flex justify-between font-medium transition-all"
-              onClick={() => toggleAccordion(index)} 
+              className="w-full text-left py-2 flex justify-between font-medium transition-all"
+              onClick={() => toggleAccordion(index)}
             >
               {section.title}
               <IoIosArrowForward

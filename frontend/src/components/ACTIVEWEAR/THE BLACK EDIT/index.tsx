@@ -13,7 +13,7 @@ const Index = () => {
       {/* <Uppertitle /> */}
       {/* <Navbar /> */}
       <Collection />
-      <div className="flex flex-row justify-center mx-auto w-full max-lg:flex-col">
+      <div className="flex flex-row justify-center mx-auto 2xl:px-10 w-full max-lg:flex-col">
         <Silder />
         <Shop_carts />
       </div>
