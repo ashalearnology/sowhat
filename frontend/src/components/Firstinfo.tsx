@@ -13,7 +13,7 @@ const Firstinfo = () => {
         {/* The background image changes from 'SUSTANCEIMG.jpg' to 'portrait1.jpg' at medium screen sizes */}
       </div>
 
-      <div className="flex flex-col items-center h-screen w-3/4 mx-auto text-center justify-center px-4">
+      <div className="flex flex-col  items-center h-screen w-3/4 mx-auto text-center justify-center px-4">
         <p className="mb-4 text-sm sm:text-base md:text-lg lg:text-xl">
           CERTIFICATES AVAILABLE - CPSIA for recycled polyester, GOTS for organic cotton.
         </p>
