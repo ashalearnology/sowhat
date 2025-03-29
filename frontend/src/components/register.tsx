@@ -3,9 +3,9 @@ import Link from "next/link";
 export default function () {
   return (
     <div className="flex justify-center">
-      <form className="w-2/6 border my-16 px-8">
+      <form className="w-11/12 sm:w-4/6 md:w-4/6 lg:w-4/6 xl:w-2/6 border my-16 px-4 md:px-8">
 
-        <h2 className="text-4xl font-medium text-center pt-8">
+        <h2 className="text-3xl sm:text-4xl font-medium text-center pt-8">
           CREATE ACCOUNT
         </h2>
 
