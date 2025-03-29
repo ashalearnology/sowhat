@@ -8,7 +8,7 @@ const Bikine_ = () => {
   return (
     <div>
       <Bikine_collection />
-      <div className="flex flex-row justify-center mx-auto w-full max-lg:flex-col">
+      <div className="flex justify-center mx-auto w-full max-lg:flex-col">
         <Bikine_slider />
         <Bikine_body />
       </div>

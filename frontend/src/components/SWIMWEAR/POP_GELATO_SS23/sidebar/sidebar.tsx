@@ -10,11 +10,10 @@ const Pop_gelato_slider = () => {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
 
   const toggleSize = (size: string) => {
-    setSelectedSizes(
-      (prevSizes) =>
-        prevSizes.includes(size)
-          ? prevSizes.filter((s) => s !== size) 
-          : [...prevSizes, size],
+    setSelectedSizes((prevSizes) =>
+      prevSizes.includes(size)
+        ? prevSizes.filter((s) => s !== size)
+        : [...prevSizes, size],
     );
   };
 
@@ -149,7 +148,7 @@ const Pop_gelato_slider = () => {
   };
 
   return (
-    <div className="md:w-1/4">
+    <div className="lg:w-1/4">
       <div className="flex-col ml-0 mt-10 outline-none max-lg:hidden">
         {sections.map((section, index) => (
           <div key={index} className="mb-2 group px-4">
