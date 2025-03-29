@@ -22,7 +22,7 @@ const Login = () => {
           SIGN IN
         </button>
         <div className="flex items-center justify-center w-full text-sm gap-2 flex-wrap">
-          <a href="#" className="text-red-600 underline font-bold">
+          <a href="/register" className="text-red-600 underline font-bold">
             Create account
           </a>
           <span>/</span>
