@@ -148,7 +148,7 @@ const Bikine_slider = () => {
   };
 
   return (
-    <div className="md:w-1/4">
+    <div className="lg:w-1/4">
       <div className="flex-col ml-0 mt-10 outline-none max-lg:hidden">
         {sections.map((section, index) => (
           <div key={index} className="mb-2 group px-4">

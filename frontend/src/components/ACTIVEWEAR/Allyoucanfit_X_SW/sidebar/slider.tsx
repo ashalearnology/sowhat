@@ -148,7 +148,7 @@ const Allyoucanfit_slider = () => {
   };
 
   return (
-    <div className="md:w-1/4">
+    <div className="lg:w-1/4">
       <div className="flex-col ml-0 mt-10 outline-none max-lg:hidden">
         {sections.map((section, index) => (
           <div key={index} className="mb-2 group px-4">
@@ -175,11 +175,11 @@ const Allyoucanfit_slider = () => {
       </div>
 
       {/* Second div */}
-      <div className=" md:w-full py-2 flex gap-2 lg:hidden px-5 overflow-x-scroll">
+      <div className=" md:w-full py-2 flex gap-2 lg:hidden px-8 overflow-x-scroll">
         {sections.map((section, index) => (
           <div key={index} className="mb-2 group px-4 border ">
             <button
-              className="  w-full text-left py-2 flex justify-between font-medium transition-all"
+              className="w-full text-left py-2 flex justify-between font-medium transition-all"
               onClick={() => toggleAccordion(index)}
             >
               {section.title}
@@ -196,7 +196,7 @@ const Allyoucanfit_slider = () => {
                     <div className="font-semibold text-2xl">
                       {section.title}
                     </div>
-                    <button onClick={() => closeSidebar(index)}>
+                    <button onClick={() => closeSidebar}>
                       <IoMdClose className="text-xl text-gray-600" />
                     </button>
                   </div>

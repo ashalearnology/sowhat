@@ -131,7 +131,6 @@ const Sliderslider = () => {
 
   return (
     <div className="lg:w-1/4">
-      {/* Sidebar for larger screens */}
       <div className="flex-col ml-0 mt-10 outline-none max-lg:hidden">
         {sections.map((section, index) => (
           <div key={index} className="mb-2 group px-4">
@@ -157,41 +156,39 @@ const Sliderslider = () => {
         ))}
       </div>
 
-      {/* Sidebar for mobile */}
-      <div className="md:w-full py-2 flex gap-2 lg:hidden px-5 overflow-x-scroll">
+      {/* Second div */}
+      <div className=" md:w-full py-2 flex gap-2 lg:hidden px-8 overflow-x-scroll">
         {sections.map((section, index) => (
-          <div key={index} className="mb-2 group px-4 border">
+          <div key={index} className="mb-2 group px-4 border ">
             <button
               className="w-full text-left py-2 flex justify-between font-medium transition-all"
-              onClick={() => openSidebar(index)}
+              onClick={() => toggleAccordion(index)}
             >
               {section.title}
               <IoIosArrowForward
                 className={`cursor-pointer transform duration-300 transition-transform text-gray-300 ${
-                  openSidebarIndex === index ? 'rotate-90' : ''
+                  activeIndexes.includes(index) ? 'rotate-90' : ''
                 }`}
               />
             </button>
+            {activeIndexes.includes(index) && (
+              <div className="lg:hidden flex h-screen w-72 absolute bg-slate-100 top-0 right-0 z-50">
+                <div className="min-w-full px-4 py-2 flex-col gap-12 bg-white transition-all overflow-hidden">
+                  <div className="flex justify-between items-center">
+                    <div className="font-semibold text-2xl">
+                      {section.title}
+                    </div>
+                    <button onClick={() => closeSidebar}>
+                      <IoMdClose className="text-xl text-gray-600" />
+                    </button>
+                  </div>
+                  <div>{section.content}</div>
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>
-
-      {/* Mobile Sidebar Modal */}
-      {openSidebarIndex !== null && (
-        <div className="fixed top-0 right-0 h-screen w-72 bg-slate-100 z-50 shadow-lg">
-          <div className="min-w-full px-4 py-2 flex flex-col gap-12 bg-white">
-            <div className="flex justify-between items-center">
-              <div className="font-semibold text-2xl">
-                {sections[openSidebarIndex].title}
-              </div>
-              <button onClick={closeSidebar}>
-                <IoMdClose className="text-xl text-gray-600" />
-              </button>
-            </div>
-            <div>{sections[openSidebarIndex].content}</div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
