@@ -4,9 +4,11 @@ export default function () {
   return (
     <div className="flex justify-center">
       <form className="w-2/6 border my-16 px-8">
+
         <h2 className="text-4xl font-medium text-center pt-8">
           CREATE ACCOUNT
         </h2>
+
         <input
           type="fname"
           name="fname"
@@ -44,11 +46,13 @@ export default function () {
           value="CREATE"
           className="bg-red-600 mt-6 font-medium w-full text-white py-3 rounded-full hover:bg-red-700 mb-6"
         />
+
         <div className="flex justify-center text-red-600 font-medium mb-6">
           <Link href="/" className="underline">
             Return to Store
           </Link>
         </div>
+        
       </form>
     </div>
   );
