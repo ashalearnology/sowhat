@@ -106,7 +106,7 @@ const ImageSlider = () => {
       {
         breakpoint: 768, // Mobile landscape
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.6,
           slidesToScroll: 1,
           arrows: false, // Hides arrows on smaller screens
         }

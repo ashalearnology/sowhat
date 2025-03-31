@@ -99,6 +99,7 @@ const Allyoucanfit_body = () => {
   return (
     <div className="p-4 sm:px-8 sm:py-4  xl:w-3/4 overflow-hidden flex flex-col w-full">
       <div>
+
         <ul className="flex gap-6 max-lg:justify-center flex-wrap max-sm:w-full">
           {Cartsdetails.map((item, index) => (
             <li
@@ -106,6 +107,7 @@ const Allyoucanfit_body = () => {
               className="w-[30%] flex-grow max-sm:w-full max-md:w-64 flex-shrink-0 "
             >
               <div className=" bg-gray-1s00 shadow-lg relative group rounded-lg sm:rounded-xl flex-wrap ">
+
                 <img
                   src={item.imag1}
                   alt={item.name}

@@ -83,7 +83,7 @@ const ImageSlider = () => {
       {
         breakpoint: 768, // Mobile Landscape
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.6,
           slidesToScroll: 1,
           arrows: false, // Hide arrows for cleaner UI
         },
@@ -111,7 +111,7 @@ const ImageSlider = () => {
             <img
               src={slide.url}
               alt={`Slide ${index + 1}, Slide ${index - 1}`}
-              className="max-w-[27.5rem] h-[27.5rem] object-cover"
+              className="w-[27.5rem] md:max-w-[27.5rem] h-[27.5rem] object-center md:object-cover"
               loading="lazy"
             />
           </div>
