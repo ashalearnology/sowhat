@@ -4,17 +4,26 @@
 import { useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 import { MdOutlineEuroSymbol } from 'react-icons/md';
-import { IoMdClose } from 'react-icons/io';
+import { IoMdClose } from 'react-icons/io'; 
 
-const Sport_bra_accordion = () => {
+const Accordion = () => {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const toggleSize = (size: string) => {
     setSelectedSizes((prevSizes) =>
       prevSizes.includes(size)
         ? prevSizes.filter((s) => s !== size)
-        : [...prevSizes, size],
+        : [...prevSizes, size]
     );
+  };
+
+  const toggleAccordion = (index: number) => {
+    setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
+
+  const closeSidebar = () => {
+    setActiveIndex(null);
   };
 
   const sections = [
@@ -98,7 +107,7 @@ const Sport_bra_accordion = () => {
                   {size}
                 </button>
               </li>
-            ),
+            )
           )}
         </ul>
       ),
@@ -133,20 +142,6 @@ const Sport_bra_accordion = () => {
     },
   ];
 
-  const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
-
-  const toggleAccordion = (index: number) => {
-    setActiveIndexes((prevIndexes) =>
-      prevIndexes.includes(index)
-        ? prevIndexes.filter((i) => i !== index)
-        : [...prevIndexes, index],
-    );
-  };
-
-  const closeSidebar = (index: number) => {
-    setActiveIndexes((prevIndexes) => prevIndexes.filter((i) => i !== index));
-  };
-
   return (
     <div className="lg:w-1/4">
       <div className="flex-col ml-0 mt-10 outline-none max-lg:hidden">
@@ -159,13 +154,13 @@ const Sport_bra_accordion = () => {
               {section.title}
               <IoIosArrowForward
                 className={`cursor-pointer transform duration-300 transition-transform text-gray-300 ${
-                  activeIndexes.includes(index) ? 'rotate-90' : ''
+                  activeIndex === index ? 'rotate-90' : ''
                 }`}
               />
             </button>
             <div
               className={`px-4 py-2 bg-white transition-all overflow-hidden ${
-                activeIndexes.includes(index) ? 'block' : 'hidden'
+                activeIndex === index ? 'block' : 'hidden'
               }`}
             >
               {section.content}
@@ -175,9 +170,10 @@ const Sport_bra_accordion = () => {
       </div>
 
       {/* Second div */}
+
       <div className=" md:w-full py-2 flex gap-2 lg:hidden px-8 overflow-x-scroll">
         {sections.map((section, index) => (
-          <div key={index} className="mb-2 group px-4 border ">
+          <div key={index} className="mb-2 group px-4 border">
             <button
               className="w-full text-left py-2 flex justify-between font-medium transition-all"
               onClick={() => toggleAccordion(index)}
@@ -185,18 +181,18 @@ const Sport_bra_accordion = () => {
               {section.title}
               <IoIosArrowForward
                 className={`cursor-pointer transform duration-300 transition-transform text-gray-300 ${
-                  activeIndexes.includes(index) ? 'rotate-90' : ''
+                  activeIndex === index ? 'rotate-90' : ''
                 }`}
               />
             </button>
-            {activeIndexes.includes(index) && (
+            {activeIndex === index && (
               <div className="lg:hidden flex h-screen w-72 absolute bg-slate-100 top-0 right-0 z-50">
                 <div className="min-w-full px-4 py-2 flex-col gap-12 bg-white transition-all overflow-hidden">
                   <div className="flex justify-between items-center">
                     <div className="font-semibold text-2xl">
                       {section.title}
                     </div>
-                    <button onClick={() => closeSidebar(index)}>
+                    <button onClick={closeSidebar}>
                       <IoMdClose className="text-xl text-gray-600" />
                     </button>
                   </div>
@@ -211,4 +207,4 @@ const Sport_bra_accordion = () => {
   );
 };
 
-export default Sport_bra_accordion;
+export default Accordion;
