@@ -169,7 +169,7 @@ const Navbar = () => {
           </li>
           <li>
             <div
-              onClick={handleShowsearch}
+              // onClick={handleShowsearch}
               className="cursor-pointer"
               onClick={() => setMenuOpen(false)}
             >

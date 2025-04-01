@@ -8,7 +8,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-body,html{
+body,
+html {
   overflow-x: hidden;
 }
 ul,
@@ -33,9 +34,8 @@ ol {
   }
 }
 
-@media (min-width:786) and (max-width:1024px)
-{
-  .bg-hero{
+@media (min-width: 786) and (max-width: 1024px) {
+  .bg-hero {
     background-position: center;
     width: 100vw;
   }
@@ -53,10 +53,6 @@ ol {
     background-position: top center; /* Adjust focus for mobile */
   }
 }
-
-
-
-
 
 @keyframes fadeIn {
   0% {

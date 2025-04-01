@@ -20,9 +20,9 @@ const Accordion = () => {
     );
   };
 
-  const toggleAccordion = (index: number) => {
-    setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
-  };
+  // const toggleAccordion = (index: number) => {
+  //   setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+  // };
 
   const closeSidebar = () => {
     setActiveIndex(null);
@@ -155,9 +155,9 @@ const Accordion = () => {
     );
   };
 
-  const closeSidebar = (index: number) => {
-    setActiveIndexes((prevIndexes) => prevIndexes.filter((i) => i !== index));
-  };
+  // const closeSidebar = (index: number) => {
+  //   setActiveIndexes((prevIndexes) => prevIndexes.filter((i) => i !== index));
+  // };
 
 
   return (
