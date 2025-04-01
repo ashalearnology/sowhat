@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Activedown from './Activedown';
 import Swimdown from './Swindown';
 import gsap from 'gsap';
+import ShoppingCarts from './carts';
 import { Righteous } from 'next/font/google';
 
 const right = Righteous({
@@ -19,6 +20,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const menuIconRef = useRef(null);
+  const [showCart, setshowCart] = useState(false);
 
   useEffect(() => {
     if (menuOpen) {
@@ -43,6 +45,13 @@ const Navbar = () => {
       document.body.style.overflow = 'auto'; // Restore scrolling
     }
   }, [menuOpen]);
+
+  const handleShowCart = () => {
+    setshowCart(true);
+  };
+  const handleHideCart = () => {
+    setshowCart(false);
+  };
 
   return (
     <>
@@ -105,11 +114,14 @@ const Navbar = () => {
             />
           </div>
         </nav>
-        <div className="absolute right-4 lg:right-12 top-1/2 transform -translate-y-1/2">
+        <button
+          onClick={handleShowCart}
+          className="absolute right-4 lg:right-12 top-1/2 transform -translate-y-1/2"
+        >
           <div className="h-[36px] w-[36px] flex items-center justify-center border-[1px] border-[#C3C3C3] rounded-full">
             <span className="text-[16px] font-bold">0</span>
           </div>
-        </div>
+        </button>
       </div>
 
       {/* Sidebar Menu */}
@@ -159,6 +171,7 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
+      {showCart && <ShoppingCarts handleHideCart={handleHideCart} />}
     </>
   );
 };

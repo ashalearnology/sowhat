@@ -8,7 +8,7 @@ const Leggings_index = () => {
   return (
     <div>
       <Leggings_collection />
-      <div className="flex flex-row justify-center mx-auto w-full max-lg:flex-col">
+      <div className="flex justify-center mx-auto 2xl:px-10 w-full max-lg:flex-col">
         <Leggings_accordion />
         <Leggings_carts />
       </div>

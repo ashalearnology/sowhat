@@ -14,7 +14,9 @@ const Accordion = () => {
     setSelectedSizes((prevSizes) =>
       prevSizes.includes(size)
         ? prevSizes.filter((s) => s !== size)
-        : [...prevSizes, size]
+
+        : [...prevSizes, size],
+
     );
   };
 

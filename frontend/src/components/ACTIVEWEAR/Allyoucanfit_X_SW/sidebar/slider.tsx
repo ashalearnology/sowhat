@@ -170,7 +170,7 @@ const Accordion = () => {
       </div>
 
       {/* Second div */}
-      <div className="md:w-full py-2 flex gap-2 lg:hidden px-8 overflow-x-scroll">
+      <div className=" md:w-full py-2 flex gap-2 lg:hidden px-8 overflow-x-scroll">
         {sections.map((section, index) => (
           <div key={index} className="mb-2 group px-4 border">
             <button
@@ -191,7 +191,8 @@ const Accordion = () => {
                     <div className="font-semibold text-2xl">
                       {section.title}
                     </div>
-                    <button onClick={closeSidebar}>
+
+                    <button onClick={() => closeSidebar}>
                       <IoMdClose className="text-xl text-gray-600" />
                     </button>
                   </div>
