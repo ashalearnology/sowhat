@@ -7,6 +7,7 @@ import Activedown from './Activedown';
 import Swimdown from './Swindown';
 import gsap from 'gsap';
 import ShoppingCarts from './carts';
+import SearchButton from './Search';
 import { Righteous } from 'next/font/google';
 
 const right = Righteous({
@@ -21,6 +22,7 @@ const Navbar = () => {
   const menuRef = useRef(null);
   const menuIconRef = useRef(null);
   const [showCart, setshowCart] = useState(false);
+  const [showsearch, setshowsearch] = useState(false);
 
   useEffect(() => {
     if (menuOpen) {
@@ -51,6 +53,12 @@ const Navbar = () => {
   };
   const handleHideCart = () => {
     setshowCart(false);
+  };
+  const handleShowsearch = () => {
+    setshowsearch(true);
+  };
+  const handleHideSearch = () => {
+    setshowsearch(false);
   };
 
   return (
@@ -95,8 +103,8 @@ const Navbar = () => {
             <li>
               <Link href={'/wishlist'}>My WISHLIST</Link>
             </li>
-            <li>
-              <Link href={'/search'}>SEARCH</Link>
+            <li onClick={handleShowsearch} className="cursor-pointer">
+              SEARCH
             </li>
             <li>
               <Link href={'/login'}>LOGIN</Link>
@@ -160,9 +168,13 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href={'/search'} onClick={() => setMenuOpen(false)}>
+            <div
+              onClick={handleShowsearch}
+              className="cursor-pointer"
+              onClick={() => setMenuOpen(false)}
+            >
               SEARCH
-            </Link>
+            </div>
           </li>
           <li>
             <Link href={'/login'} onClick={() => setMenuOpen(false)}>
@@ -172,6 +184,7 @@ const Navbar = () => {
         </ul>
       </div>
       {showCart && <ShoppingCarts handleHideCart={handleHideCart} />}
+      {showsearch && <SearchButton handleHideSearch={handleHideSearch} />}
     </>
   );
 };
