@@ -109,7 +109,6 @@ const Shop_body = () => {
               className="w-[30%] flex-grow max-sm:w-full max-md:w-64 flex-shrink-0 "
             >
               <div className=" bg-gray-1s00 shadow-lg relative group rounded-lg sm:rounded-xl flex-wrap ">
-
                 <img
                   src={item.imag1}
                   alt={item.name}
