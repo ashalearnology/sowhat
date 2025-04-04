@@ -3,7 +3,7 @@
 import Allyoucanfit_x_drop_down from './drop.down';
 import Allyoucanfit_img_sildbar from './img.sidebar';
 
-const Allyoucanfit_index = () => {
+const SinglePage = () => {
   return (
     <div className="flex flex-col gap-8 overflow-hidden">
       <Allyoucanfit_img_sildbar />
@@ -11,4 +11,4 @@ const Allyoucanfit_index = () => {
     </div>
   );
 };
-export default Allyoucanfit_index;
+export default SinglePage;

@@ -103,7 +103,7 @@ const Separates_body = () => {
                 <img
                   src={item.imag1}
                   alt={item.name}
-                  className="w-full object-cover h-full absolute top-0 transition-opacity duration-500 group-hover:opacity-0 rounded-lg bg-white sm:rounded-xl"
+                  className="w-full object-cover h-full absolute top-0 transition-opacity duration-500 group-hover:opacity-0 rounded-lg sm:rounded-2xl"
                 ></img>
 
                 <img
