@@ -17,7 +17,7 @@ const Uppertitle = () => {
           </div>
 
           {/* Text Content */}
-          <div className="text-center cursor-pointer text-center mx-auto text-[12px]">
+          <div className="text-center cursor-pointer  mx-auto text-[12px]">
             <p className="relative  inline-block before:absolute before:left-0 before:bottom-0 before:w-full before:h-[1px] before:bg-gray-400 after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] after:bg-black after:transition-all after:duration-500 hover:after:w-full hover:text-[#282828]">
               OUT NOW: SO COMFY - BODYSUITS. LOUNGE DRESSES.
             </p>

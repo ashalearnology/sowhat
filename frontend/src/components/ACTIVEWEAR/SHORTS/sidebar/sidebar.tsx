@@ -4,9 +4,9 @@
 import { useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 import { MdOutlineEuroSymbol } from 'react-icons/md';
-import { IoMdClose } from 'react-icons/io'; 
+import { IoMdClose } from 'react-icons/io';
 
-const Accordion = () => {
+const Sportss_accordion = () => {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -14,7 +14,7 @@ const Accordion = () => {
     setSelectedSizes((prevSizes) =>
       prevSizes.includes(size)
         ? prevSizes.filter((s) => s !== size)
-        : [...prevSizes, size]
+        : [...prevSizes, size],
     );
   };
 
@@ -107,7 +107,7 @@ const Accordion = () => {
                   {size}
                 </button>
               </li>
-            )
+            ),
           )}
         </ul>
       ),
@@ -172,18 +172,20 @@ const Accordion = () => {
       {/* Second div */}
       <div className="md:w-full py-2 flex gap-2 lg:hidden px-8 overflow-x-scroll">
         {sections.map((section, index) => (
-          <div key={index} className="mb-2 group px-4 border">
-            <button
-              className="w-full text-left py-2 flex justify-between font-medium transition-all"
+          <div key={index}>
+            <div
+              className="flex group p-3 mb-2 border cursor-pointer items-center rounded-lg"
               onClick={() => toggleAccordion(index)}
             >
-              {section.title}
-              <IoIosArrowForward
-                className={`cursor-pointer transform duration-300 transition-transform text-gray-300 ${
-                  activeIndex === index ? 'rotate-90' : ''
-                }`}
-              />
-            </button>
+              <span className="w- flex justify-between items-center gap-4 font-medium transition-all">
+                {section.title}
+                <IoIosArrowForward
+                  className={`cursor-pointer transform duration-300 transition-transform text-gray-300 
+            group-hover:text-gray-500 
+            ${activeIndex === index ? 'rotate-90' : ''}`}
+                />
+              </span>
+            </div>
             {activeIndex === index && (
               <div className="lg:hidden flex h-screen w-72 absolute bg-slate-100 top-0 right-0 z-50">
                 <div className="min-w-full px-4 py-2 flex-col gap-12 bg-white transition-all overflow-hidden">
@@ -192,7 +194,7 @@ const Accordion = () => {
                       {section.title}
                     </div>
                     <button onClick={closeSidebar}>
-                      <IoMdClose className="text-xl text-gray-600" />
+                      <IoMdClose className=" text-gray-600" />
                     </button>
                   </div>
                   <div>{section.content}</div>
@@ -206,4 +208,4 @@ const Accordion = () => {
   );
 };
 
-export default Accordion;
+export default Sportss_accordion;

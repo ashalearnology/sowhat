@@ -135,7 +135,7 @@ const Navbar = () => {
       {/* Sidebar Menu */}
       <div
         ref={menuRef}
-        className={`fixed top-0 left-0 w-[250px] h-full bg-white shadow-lg transform -translate-x-full transition-transform lg:hidden flex flex-col p-5 space-y-4 font-bold ${right.className} z-[101]`}
+        className={`fixed top-0 left-0 min-w-72 h-full bg-white shadow-lg transform -translate-x-full transition-transform lg:hidden flex flex-col p-5 space-y-4 font-bold ${right.className} z-50`}
       >
         <div className="flex justify-end">
           <button
@@ -145,7 +145,22 @@ const Navbar = () => {
             ✕
           </button>
         </div>
-        <ul>
+        {showsearch && (
+          <div className="relative w-full cursor-pointer">
+            <input
+              type="text"
+              className="w-full border-2  rounded-md px-2 py-1"
+              placeholder="Search...."
+            />
+            <button
+              className="absolute right-2 top-1/2 -translate-y-1/2"
+              onClick={handleHideSearch}
+            >
+              X
+            </button>
+          </div>
+        )}
+        <ul className="space-y-1">
           <li>
             <Link href={'/'} onClick={() => setMenuOpen(false)}>
               HOME
@@ -169,9 +184,9 @@ const Navbar = () => {
           </li>
           <li>
             <div
-              // onClick={handleShowsearch}
+              onClick={handleShowsearch}
               className="cursor-pointer"
-              onClick={() => setMenuOpen(false)}
+              // onClick={() => setMenuOpen(false)}
             >
               SEARCH
             </div>

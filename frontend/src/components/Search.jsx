@@ -14,7 +14,7 @@ export default function SearchButton({ handleHideSearch }) {
   return (
     <>
       <div
-        className={` fixed inset-0 bg-black/50 flex justify-center z-50 duration-300   ${
+        className={`hidden lg:block fixed inset-0 bg-black/50 z-40 duration-300   ${
           visible ? 'opacity-100 ' : 'opacity-0 '
         }`}
       >
