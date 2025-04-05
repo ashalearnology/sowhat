@@ -16,7 +16,10 @@ export default function ShoppingCarts({ handleHideCart }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex justify-end z-50  transition-opacity duration-300 ">
+    <div
+      className="fixed inset-0 bg-black/50 flex justify-end z-50  transition-opacity duration-300 "
+      onClick={handleclose}
+    >
       <div
         className={`bg-white w-96 h-full shadow-lg flex flex-col transform ${
           visible ? 'translate-x-0' : 'translate-x-full'

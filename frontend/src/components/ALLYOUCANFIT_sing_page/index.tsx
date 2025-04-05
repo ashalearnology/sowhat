@@ -5,7 +5,7 @@ import Allyoucanfit_img_sildbar from './img.sidebar';
 
 const SinglePage = () => {
   return (
-    <div className="flex flex-col gap-8 overflow-hidden">
+    <div className="flex flex-col py-6 gap-8 overflow-hidden">
       <Allyoucanfit_img_sildbar />
       <Allyoucanfit_x_drop_down />
     </div>
