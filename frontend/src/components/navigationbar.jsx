@@ -52,7 +52,7 @@ const Navigation = () => {
     },
     {
       title: 'SUSTAINABILITY',
-      to: '/',
+      to: '/sustance',
       child: [],
     },
     {
