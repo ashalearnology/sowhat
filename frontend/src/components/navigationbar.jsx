@@ -45,18 +45,35 @@ const Navigation = () => {
         { name: 'SEPARATES', path: '/Separates' },
       ],
     },
-    { title: 'SUSTAINABILITY', to: '/', child: [] },
-    { title: 'my wishlist', to: '/', child: [] },
-    { title: 'search', to: '/', child: [] },
-    { title: 'login', to: '/login', child: [] },
+
+    {
+      title: 'SUSTAINABILITY',
+      to: '/sustance',
+      child: [],
+    },
+    {
+      title: 'my wishlist',
+      to: '/',
+      child: [],
+    },
+    {
+      title: 'search',
+      to: '#',
+      child: [],
+    },
+    {
+      title: 'login',
+      to: '/login',
+      child: [],
   ];
 
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isMenu, setIsMenu] = useState(false);
-  const [Login, setLogin] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const windowWidth = useWindowSize();
+  const dropdownRef = useRef(null);
+  const navRef = useRef(null);
 
   const dropdownRefs = useRef([]); // Multiple dropdown refs
   const toggleRef = useRef(null);
@@ -77,11 +94,24 @@ const Navigation = () => {
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    } else {
+      const handleClickOutside = (event) => {
+        if (navRef.current && !navRef.current.contains(event.target)) {
+          setIsMenu(false);
+        }
+      };
+
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }
+  }, [windowWidth]);
+
 
   const toggleMenu = () => {
     setIsMenu(!isMenu);
@@ -90,6 +120,10 @@ const Navigation = () => {
   const handleShowSearch = (nav) => {
     if (nav.title === 'search') {
       setShowSearch(true);
+    } else if (nav.to == '#') {
+      setIsMenu(true);
+    } else {
+      setIsMenu(false);
     }
   };
 
@@ -184,7 +218,12 @@ const Navigation = () => {
 
         {isMenu && (
           <div className="fixed inset-0 bg-black/50 flex justify-start z-50 transition-opacity duration-300">
-            <div className="bg-white w-72 h-full shadow-lg flex flex-col relative px-2 overflow-hidden transition-transform duration-300">
+
+            <div
+              className={`bg-white w-72 h-full shadow-lg flex flex-col transform relative px-2 overflow-hidden transition-transform duration-300`}
+              ref={navRef}
+            >
+
               <div className="p-4 flex justify-end">
                 <button onClick={toggleMenu} className="text-gray-700 text-xl">
                   ✕
@@ -233,7 +272,10 @@ const Navigation = () => {
                         </div>
 
                         {nav.child.length > 0 && openDropdown === i && (
-                          <ul className="flex flex-col pl-6 w-full p-2 rounded-lg transition-all duration-500 ease-in-out">
+                          <ul
+                            className="flex flex-col pl-6 w-full p-2 rounded-lg transition-all duration-500 ease-in-out"
+                            onClick={toggleMenu}
+                          >
                             {nav.child.map((child, index) => (
                               <li key={index} className="text-[18px] mb-2">
                                 <Link href={child.path} className="block">
