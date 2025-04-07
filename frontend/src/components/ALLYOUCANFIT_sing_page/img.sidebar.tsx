@@ -13,25 +13,25 @@ const Allyoucanfit_img_sildbar = () => {
   const arr = [
     {
       image:
-        "https://sowhat.global/cdn/shop/files/IMG_4793_Custom_1080x.jpg?v=1686307118",
+        "/images/home/hover1.jpg",
     },
     {
-      image: "https://sowhat.global/cdn/shop/files/qw2a_1080x.png?v=1686307118",
-    },
-    {
-      image:
-        "https://sowhat.global/cdn/shop/files/IMG_4796_Custom_1080x.jpg?v=1686307118",
+      image: "/images/home/hover2.jpg",
     },
     {
       image:
-        "https://sowhat.global/cdn/shop/files/IMG_4797_Custom_1080x.jpg?v=1686307118",
-    },
-    {
-      image: "https://sowhat.global/cdn/shop/files/qw1_1080x.png?v=1686307118",
+        "/images/home/hover3.jpg",
     },
     {
       image:
-        "https://sowhat.global/cdn/shop/files/DSC0559_Custom_1080x.jpg?v=1686307118",
+        "/images/home/hover4.jpg",
+    },
+    {
+      image: "/images/home/hover5.jpg",
+    },
+    {
+      image:
+        "/images/home/hover6.jpg",
     },
   ];
 
