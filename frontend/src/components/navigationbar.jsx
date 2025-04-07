@@ -1,7 +1,7 @@
 /** @format */
 'use client';
 
-const { default: Image } = require('next/image');
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
@@ -45,7 +45,6 @@ const Navigation = () => {
         { name: 'SEPARATES', path: '/Separates' },
       ],
     },
-
     {
       title: 'SUSTAINABILITY',
       to: '/sustance',
@@ -65,6 +64,7 @@ const Navigation = () => {
       title: 'login',
       to: '/login',
       child: [],
+    },
   ];
 
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -72,10 +72,8 @@ const Navigation = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const windowWidth = useWindowSize();
-  const dropdownRef = useRef(null);
   const navRef = useRef(null);
-
-  const dropdownRefs = useRef([]); // Multiple dropdown refs
+  const dropdownRefs = useRef([]);
   const toggleRef = useRef(null);
 
   const toggleDropdown = (index) => {
@@ -84,34 +82,29 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        !dropdownRefs.current.some(
-          (ref) => ref && ref.contains(event.target)
-        ) &&
-        !toggleRef.current?.contains(event.target)
-      ) {
-        setOpenDropdown(null);
-      }
-    };
-
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    } else {
-      const handleClickOutside = (event) => {
+      if (windowWidth >= 1024) {
+        // Desktop
+        if (
+          !dropdownRefs.current.some(
+            (ref) => ref && ref.contains(event.target),
+          ) &&
+          !toggleRef.current?.contains(event.target)
+        ) {
+          setOpenDropdown(null);
+        }
+      } else {
+        // Mobile
         if (navRef.current && !navRef.current.contains(event.target)) {
           setIsMenu(false);
         }
-      };
+      }
+    };
 
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, [windowWidth]);
-
 
   const toggleMenu = () => {
     setIsMenu(!isMenu);
@@ -120,7 +113,7 @@ const Navigation = () => {
   const handleShowSearch = (nav) => {
     if (nav.title === 'search') {
       setShowSearch(true);
-    } else if (nav.to == '#') {
+    } else if (nav.to === '#') {
       setIsMenu(true);
     } else {
       setIsMenu(false);
@@ -218,12 +211,10 @@ const Navigation = () => {
 
         {isMenu && (
           <div className="fixed inset-0 bg-black/50 flex justify-start z-50 transition-opacity duration-300">
-
             <div
-              className={`bg-white w-72 h-full shadow-lg flex flex-col transform relative px-2 overflow-hidden transition-transform duration-300`}
+              className="bg-white w-72 h-full shadow-lg flex flex-col transform relative px-2 overflow-hidden transition-transform duration-300"
               ref={navRef}
             >
-
               <div className="p-4 flex justify-end">
                 <button onClick={toggleMenu} className="text-gray-700 text-xl">
                   ✕
