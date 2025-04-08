@@ -1,4 +1,6 @@
 /** @format */
+'use client';
+import { useState } from 'react';
 
 const Sportss_carts = () => {
   const Cartsdetails = [
@@ -99,12 +101,18 @@ const Sportss_carts = () => {
       price: '    €52,00-€37,00 ',
     },
   ];
+  const [currentPage, setCurrentPage] = useState(1);
+  const prPage = 6;
+  const totalPages = Math.ceil(Cartsdetails.length / prPage);
+  const indexOfLastPage = currentPage * prPage;
+  const indexOfFirstPage = indexOfLastPage - prPage;
+  const currentCarts = Cartsdetails.slice(indexOfFirstPage, indexOfLastPage);
 
   return (
     <div className="p-4 sm:px-8 sm:py-4  xl:w-3/4 overflow-hidden flex flex-col w-full">
       <div>
         <ul className="flex gap-6 max-lg:justify-center flex-wrap max-sm:w-full">
-          {Cartsdetails.map((item, index) => (
+          {currentCarts.map((item, index) => (
             <li
               key={index}
               className="w-[30%] flex-grow max-sm:w-full max-md:w-64 flex-shrink-0 "
@@ -133,10 +141,19 @@ const Sportss_carts = () => {
         </ul>
       </div>
       <div className="flex gap-2">
-        <button className="text-white  bg-black w-12 h-12 text-lg rounded-full ">
-          1
-        </button>
-        <button className="border-2 w-12 h-12 text-lg rounded-full">2</button>
+        {[...Array(totalPages)].map((item, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentPage(index + 1)}
+            className={`w-12 h-12 text-lg rounded-full ${
+              currentPage === index + 1
+                ? 'text-white  bg-black'
+                : 'text-black bg-white hover:text-white border hover:bg-black'
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
     </div>
   );
