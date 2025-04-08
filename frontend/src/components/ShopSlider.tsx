@@ -7,6 +7,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { GiMatterStates } from 'react-icons/gi';
+import  Link  from "next/link";
 
 const ImageSlider = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -15,18 +16,21 @@ const ImageSlider = () => {
   const slides = [
     {
       url: '/images/home/hover1.jpg',
+      link:"/SinglePage",
       hoverUrl: '/images/home/hover01.png',
       text: 'ALLYOUCANFIT X CAMILLE SPORTS BRA',
       protext: '€54,00',
     },
     {
       url: '/images/home/hover2.jpg',
+      link:"/SinglePage",
       hoverUrl: '/images/home/hover02.png',
       text: 'ALLYOUCANFIT X VENUS SHORTS',
       protext: '€60,00',
     },
     {
       url: '/images/home/hover3.jpg',
+      link:"/SinglePage",
       hoverUrl: '/images/home/hover03.png',
       text: 'ALLYOUCANFIT X NICOLE SHORTS BRA',
       protext: '€60,00',
@@ -34,30 +38,35 @@ const ImageSlider = () => {
 
     {
       url: '/images/home/hover4.jpg',
+      link:"/SinglePage",
       hoverUrl: '/images/home/hover04.png',
       text: 'ALLYOUCANFIT X KELLY SHORTS BRA',
       protext: '€60,00',
     },
     {
       url: '/images/home/hover5.jpg',
+      link:"/SinglePage",
       hoverUrl: '/images/home/hover05.png',
       text: 'ALLYOUCANFIT X LYLA BODYSUIT',
       protext: '€60,00',
     },
     { 
       url: '/images/home/hover6.jpg',
+      link:"/SinglePage",
       hoverUrl: '/images/home/hover06.png',
       text: 'ALLYOUCANFIT X SERENA MESH LEGGINGS',
       protext: '€53,00',
     },
     {
       url: '/images/home/hover7.jpg',
+      link:"/SinglePage",
       hoverUrl: '/images/home/hover07.png',
       text: 'ALLYOUCANFIT X VENUS LEGGINGS',
       protext: '€60,00',
     },
     {
       url: '/images/home/hover8.jpg',
+      link:"/SinglePage",
       hoverUrl: '/images/home/hover08.png',
       text: 'ALLYOUCANFIT X WHITE ECO HOODIE',
       protext: '€60,00',
@@ -147,14 +156,14 @@ const ImageSlider = () => {
             className="relative h-[45.438rem]"
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-          >
+          ><Link href={slide.link}>
             <img
               src={hoveredIndex === index ? slide.hoverUrl : slide.url}
               alt={`Slide ${index + 1}`}
               className="w-full lg:w-[27.5rem] h-[60rem] lg:h-[41.25rem] object-cover transition-all duration-300"
               loading="lazy"
             />
-
+</Link>
             <h2 className="max-lg:text-center text-sm font-bold mt-5">{slide.text}</h2>
             <p className="max-lg:text-center text-sm text-gray-500 font-bold mt-1">
               {slide.protext}
