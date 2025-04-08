@@ -45,13 +45,13 @@ const Allyoucanfit_x_drop_down = () => {
   };
 
   return (
-    <div className="border-t flex flex-col gap-4 items-center px-4 py-10 md:px-8 lg:px-16">
+    <div className="border-t flex flex-col gap-4 items-center px-4 py-10 md:px-8 xl:px-16">
       <div>
         <h1 className="text-2xl font-semibold text-center md:text-left">
           About this style
         </h1>
       </div>
-      <div className="w-2/4 flex flex-col gap-6 border-b">
+      <div className="w-full lg:w-2/4 flex flex-col gap-6 border-b">
         {sections.map((section, index) => (
           <div key={index}>
             <div

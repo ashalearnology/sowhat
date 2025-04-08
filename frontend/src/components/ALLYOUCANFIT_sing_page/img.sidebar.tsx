@@ -47,13 +47,13 @@ const Allyoucanfit_img_sildbar = () => {
   };
 
   return (
-    <div className="flex gap-20 w-full justify-between m-2 ">
+    <div className="flex max-lg:flex-wrap lg:gap-10 xl:gap-20 w-full justify-between ">
       {/* Image Selection Section */}
-      <div className=" w-1/2">
+      <div className=" lg:w-1/2">
         {/* Image Selection Section */}
-        <div className="flex max-xl:h-[60vh] justify-between relative">
-          <div className="block w-1/2">
-            <div className="flex flex-col gap-2 w-28">
+        <div className="flex max-lg:flex-col-reverse max-sm:flex-wrap gap-4 max-md:gap-8 justify-between relative">
+          <div className="block lg:w-1/2">
+            <div className="flex flex-col max-lg:flex-wrap max-lg:flex-row gap-2 lg:w-28">
               {arr.map((item, index) => (
                 <div key={index} className="">
                   <Link
@@ -64,7 +64,7 @@ const Allyoucanfit_img_sildbar = () => {
                     <img
                       src={item.image}
                       alt={`Image ${index}`}
-                      className={`w-28 h-28 rounded-md object-cover  ${
+                      className={`w-16 sm:w-28 h-16 sm:h-28 rounded-md object-cover  ${
                         activeIndex === index
                           ? "border-4 border-red-500"
                           : "border-2 border-transparent"
@@ -98,9 +98,9 @@ const Allyoucanfit_img_sildbar = () => {
       </div>
 
       {/* Product Details Section */}
-      <div className="w-1/2 p-4 flex flex-col gap-4">
+      <div className="lg:w-1/2 flex flex-col gap-2 sm:gap-4">
         <p className="text-lg font-bold">SoWhat</p>
-        <p className="text-4xl font-semibold">
+        <p className="text-2xl sm:text-4xl font-semibold">
           ALLYOUCANFIT X CAMILLE SPORTS BRA
         </p>
         <p className="text-xl ">€54,00</p>
@@ -114,7 +114,7 @@ const Allyoucanfit_img_sildbar = () => {
         {/* Size Selection */}
         <div className="flex flex-col gap-4">
           <p className="font-semibold text-lg">Select Size</p>
-          <div className="flex gap-4">
+          <div className="flex max-sm:justify-between sm:gap-4">
             {sizes.map((size) => (
               <button
                 key={size}
