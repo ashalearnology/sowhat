@@ -1,4 +1,6 @@
 /** @format */
+'use client';
+import { useState } from 'react';
 
 const Pop_gelato_body = () => {
   const Cartsdetails = [
@@ -179,18 +181,24 @@ const Pop_gelato_body = () => {
     {
       imag1: '/images/home/hover4.jpg',
       // 'https://sowhat.global/cdn/shop/files/PINK-vneck4_1080x.jpg?v=1721891647',
-      imag2: '/images/home/hover.png',
+      imag2: '/images/home/hover04.png',
       // 'https://sowhat.global/cdn/shop/files/PINK-vneck1_1080x.jpg?v=1721891647',
       name: 'LANA SPORTS BRA IN PINK ROSE',
       price: '€60,00 ',
     },
   ];
+  const [currentPage, setCurrentPage] = useState(1);
+  const coursePerPage = 6;
+  const totalPages = Math.ceil(Cartsdetails.length / coursePerPage);
+  const indexOfLastCart = currentPage * coursePerPage;
+  const indexOfFirstCart = indexOfLastCart - coursePerPage;
+  const Cartsdetail = Cartsdetails.slice(indexOfFirstCart, indexOfLastCart);
 
   return (
     <div className="p-4 sm:px-8 sm:py-4  xl:w-3/4 overflow-hidden flex flex-col w-full">
       <div>
         <ul className="flex gap-6 max-lg:justify-center flex-wrap max-sm:w-full">
-          {Cartsdetails.map((item, index) => (
+          {Cartsdetail.map((item, index) => (
             <li
               key={index}
               className="w-[30%] flex-grow max-sm:w-full max-md:w-64 flex-shrink-0 "
@@ -199,7 +207,7 @@ const Pop_gelato_body = () => {
                 <img
                   src={item.imag1}
                   alt={item.name}
-                  className="w-full object-cover h-full absolute top-0 transition-opacity duration-500 group-hover:opacity-0 rounded-lg bg-white sm:rounded-xl"
+                  className="w-full object-cover h-full absolute top-0 transition-opacity duration-500 group-hover:opacity-0 rounded-lg sm:rounded-2xl"
                 ></img>
 
                 <img
@@ -219,10 +227,19 @@ const Pop_gelato_body = () => {
         </ul>
       </div>
       <div className="flex gap-2">
-        <button className="text-white  bg-black w-12 h-12 text-lg rounded-full ">
-          1
-        </button>
-        <button className="border-2 w-12 h-12 text-lg rounded-full">2</button>
+        {[...Array(totalPages)].map((item, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentPage(index + 1)}
+            className={`w-12 h-12 rounded-full transition-all ${
+              currentPage === index + 1
+                ? 'bg-black text-white'
+                : 'bg-gray-300 hover:bg-black hover:text-white text-gray-800'
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
 /** @format */
+'use client';
+import { useState } from 'react';
 
 const Swimsuits_body = () => {
   const Cartsdetails = [
@@ -79,13 +81,68 @@ const Swimsuits_body = () => {
       name: 'ALICIA SHORTS IN SCARLET RED',
       price: '€60,00 ',
     },
+    // same
+    {
+      imag1: '/images/home/hover02.png',
+      // 'https://sowhat.global/cdn/shop/files/DSC0909_Custom_a20ce5ed-b967-4b21-af14-37b17ba9f2ef_1080x.jpg?v=1686311358',
+      imag2: '/images/home/hover2.jpg',
+      // 'https://sowhat.global/cdn/shop/files/a4_1080x.png?v=1687343913',
+      name: 'Allyoucanfit X Nora High Waisted Shorts',
+      price: '€52,00 ',
+    },
+    {
+      imag1: '/images/home/hover04.png',
+      // 'https://sowhat.global/cdn/shop/files/SCARLET-shorts1_1080x.jpg?v=1721890495',
+      imag2: '/images/home/hover4.jpg',
+      // 'https://sowhat.global/cdn/shop/files/SCARLET-shorts2_1080x.jpg?v=1721890495',
+      name: 'ALICIA SHORTS IN SCARLET RED',
+      price: '€60,00 ',
+    },
+    {
+      imag1: '/images/home/hover5.jpg',
+      // 'https://sowhat.global/cdn/shop/files/swimwear02403_1_Large_c9d391a7-2d91-4042-8aae-e9b2913f94dd_1080x.jpg?v=1683800112',
+      imag2: '/images/home/hover05.png',
+      // 'https://sowhat.global/cdn/shop/files/aw1_1_Custom_1080x.png?v=1684482333',
+      name: 'VENUS HIGH WAISTED SHORTS',
+      price: '€60,00 ',
+    },
+    {
+      imag1: '/images/home/hover2.jpg',
+      // 'https://sowhat.global/cdn/shop/files/IMG_4790_Custom_1080x.jpg?v=1687340274',
+      imag2: '/images/readmore2/readmore4.webp',
+      // 'https://sowhat.global/cdn/shop/files/qw9_Custom_1080x.png?v=1687340274',
+      name: 'ALLYOUCANFIT X VENUS SHORTS',
+      price: '€60,00 ',
+    },
+    {
+      imag1: '/images/sustance/portrait1.jpg',
+      // 'https://sowhat.global/cdn/shop/files/DSC0909_Custom_a20ce5ed-b967-4b21-af14-37b17ba9f2ef_1080x.jpg?v=1686311358',
+      imag2: '/images/sustance/portrait2.jpg',
+      // 'https://sowhat.global/cdn/shop/files/a4_1080x.png?v=1687343913',
+      name: 'Allyoucanfit X Nora High Waisted Shorts',
+      price: '€52,00 ',
+    },
+    {
+      imag1: '/images/sustance/portrait3.jpg',
+      // 'https://sowhat.global/cdn/shop/files/SCARLET-shorts1_1080x.jpg?v=1721890495',
+      imag2: '/images/sustance/portrait4.jpg',
+      // 'https://sowhat.global/cdn/shop/files/SCARLET-shorts2_1080x.jpg?v=1721890495',
+      name: 'ALICIA SHORTS IN SCARLET RED',
+      price: '€60,00 ',
+    },
   ];
+  const [currentPage, setCurrentPage] = useState(1);
+  const coursePerPage = 6;
+  const totalPages = Math.ceil(Cartsdetails.length / coursePerPage);
+  const indexOfLastCart = currentPage * coursePerPage;
+  const indexOfFirstCart = indexOfLastCart - coursePerPage;
+  const Cartsdetail = Cartsdetails.slice(indexOfFirstCart, indexOfLastCart);
 
   return (
     <div className="p-4 sm:px-8 sm:py-4  xl:w-3/4 overflow-hidden flex flex-col w-full">
       <div>
         <ul className="flex gap-6 max-lg:justify-center flex-wrap max-sm:w-full">
-          {Cartsdetails.map((item, index) => (
+          {Cartsdetail.map((item, index) => (
             <li
               key={index}
               className="w-[30%] flex-grow max-sm:w-full max-md:w-64 flex-shrink-0 "
@@ -114,10 +171,19 @@ const Swimsuits_body = () => {
         </ul>
       </div>
       <div className="flex gap-2">
-        <button className="text-white  bg-black w-12 h-12 text-lg rounded-full ">
-          1
-        </button>
-        <button className="border-2 w-12 h-12 text-lg rounded-full">2</button>
+        {[...Array(totalPages)].map((item, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentPage(index + 1)}
+            className={`w-12 h-12 rounded-full transition-all ${
+              currentPage === index + 1
+                ? 'bg-black text-white'
+                : 'bg-gray-300 hover:bg-black hover:text-white text-gray-800'
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
     </div>
   );
