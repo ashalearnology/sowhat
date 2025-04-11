@@ -47,7 +47,7 @@ const Navigation = () => {
     },
     {
       title: 'SUSTAINABILITY',
-      to: '/sustance',
+      to: '/sustainability',
       child: [],
     },
     {

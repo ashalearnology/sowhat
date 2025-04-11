@@ -1,41 +1,47 @@
 /** @format */
 
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import React, { useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import Link from "next/link";
 
 const ImageSlider = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const slides = [
     {
-      url: '/images/home/slider1.jpg',
-      text: 'Shoap Lounge Dresses',
-      protext: '13 Productos',
+      url: "/images/home/slider1.jpg",
+      link: "/SinglePage",
+      text: "Shoap Lounge Dresses",
+      protext: "13 Productos",
     },
     {
-      url: '/images/home/slider2.jpg',
-      text: 'Shoap Care Shorts',
-      protext: '8 Productos',
+      url: "/images/home/slider2.jpg",
+      link: "/SinglePage",
+      text: "Shoap Care Shorts",
+      protext: "8 Productos",
     },
     {
-      url: '/images/home/slider3.jpg',
-      text: 'Care bottoms',
-      protext: '29 Productos',
+      url: "/images/home/slider3.jpg",
+      link: "/SinglePage",
+      text: "Care bottoms",
+      protext: "29 Productos",
     },
     {
-      url: '/images/home/slider5.jpg',
-      text: 'Shoap Bodysuits',
-      protext: '33 Productos',
+      url: "/images/home/slider5.jpg",
+      link: "/SinglePage",
+      text: "Shoap Bodysuits",
+      protext: "33 Productos",
     },
     {
-      url: '/images/home/slider4.jpg',
-      text: 'Core Shorts Bros & Tops',
-      protext: '55 Productos',
+      url: "/images/home/slider4.jpg",
+      link: "/SinglePage",
+      text: "Core Shorts Bros & Tops",
+      protext: "55 Productos",
     },
   ];
 
@@ -48,7 +54,7 @@ const ImageSlider = () => {
       onClick={onClick}
       className={`absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full 
       transition-all duration-300 ease-in-out z-10 ${
-        isHovered ? 'opacity-100 ' : 'opacity-0 '
+        isHovered ? "opacity-100 " : "opacity-0 "
       }`}
     >
       <FaArrowLeft size={20} />
@@ -64,7 +70,7 @@ const ImageSlider = () => {
       onClick={onClick}
       className={`absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full 
       transition-all duration-300 ease-in-out z-10 ${
-        isHovered ? 'opacity-100 ' : 'opacity-0 '
+        isHovered ? "opacity-100 " : "opacity-0 "
       }`}
     >
       <FaArrowRight size={20} />
@@ -98,10 +104,10 @@ const ImageSlider = () => {
       {
         breakpoint: 1024, // Tablets & small laptops
         settings: {
-          slidesToShow: 2.5, 
+          slidesToShow: 2.5,
           slidesToScroll: 1,
           arrows: true,
-        }
+        },
       },
       {
         breakpoint: 768, // Mobile landscape
@@ -109,7 +115,7 @@ const ImageSlider = () => {
           slidesToShow: 1.6,
           slidesToScroll: 1,
           arrows: false, // Hides arrows on smaller screens
-        }
+        },
       },
       {
         breakpoint: 480, // Mobile portrait
@@ -117,11 +123,10 @@ const ImageSlider = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           arrows: false,
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
-  
 
   return (
     <div
@@ -131,16 +136,19 @@ const ImageSlider = () => {
     >
       <Slider {...settings}>
         {slides.map((slide, index) => (
-          <div key={index} className="relative  h-[45.438rem]">
+          <div key={index} className="relative h-[45.438rem]">
+            <Link href={slide.link} >
             <img
               src={slide.url}
               alt={`Slide ${index + 1}, Slide ${index - 1}`}
               className="w-[27.5rem] h-[41.25rem] object-cover"
               loading="lazy"
             />
-
-            <h2 className="max-lg:text-center text-sm font-bold mt-5">{slide.text}</h2>
-            <p className="max-lg:text-center text-sm text-gray-500  font-bold mt-1">
+            </Link>
+            <h2 className="max-lg:text-center text-sm font-bold mt-5">
+              {slide.text}
+            </h2>
+            <p className="max-lg:text-center text-sm text-gray-500 font-bold mt-1">
               {slide.protext}
             </p>
           </div>
