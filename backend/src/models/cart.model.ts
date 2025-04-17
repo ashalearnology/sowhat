@@ -6,8 +6,9 @@ export interface ICartItem {
     quantity: number;
 }
 
-export interface ICartItemDocument extends ICartItem, Document {
-
+export interface ICartItemDocument {
+    productId: Schema.Types.ObjectId | IProduct;
+    quantity: number;
 }
 
 export interface ICartDocument extends Document {
