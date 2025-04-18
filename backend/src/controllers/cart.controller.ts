@@ -1,9 +1,8 @@
-import mongoose from "mongoose";
 import { Request, Response } from "express";
 import { asyncHandler } from "../utils/asyncHandler.ts";
 import { ApiError } from "../utils/ApiError.ts";
 import Product, { IProduct } from "../models/product.model.ts";
-import Cart, { ICartDocument, ICartItemDocument } from "../models/cart.model.ts";
+import Cart, { ICartDocument, ICartItem } from "../models/cart.model.ts";
 import { ApiResponse } from "../utils/ApiResponse.ts";
 import { TAX_RATE } from "../constants.ts";
 
@@ -37,7 +36,7 @@ export const addToCart = asyncHandler(async (req: Request, res: Response): Promi
             total: Number(total.toFixed(2))
         });
     } else {
-        const existingCartItem = cart.items.find((item: ICartItemDocument) =>
+        const existingCartItem = cart.items.find((item: ICartItem) =>
             item.productId && ((item.productId as IProduct)?._id?.toString() ?? '') === productId
         );
 
@@ -53,14 +52,14 @@ export const addToCart = asyncHandler(async (req: Request, res: Response): Promi
             cart.items.push({ productId, quantity });
         }
 
-        cart.subtotal = cart.items.reduce((subtotal: number, item: ICartItemDocument) => {
+        cart.subtotal = cart.items.reduce((subtotal: number, item: ICartItem) => {
             if (item.productId && (item.productId as IProduct).mrp) {
                 return subtotal + ((item.productId as IProduct).mrp * item.quantity);
             }
             return subtotal;
         }, 0);
 
-        cart.discount = cart.items.reduce((discount: number, item: ICartItemDocument) => {
+        cart.discount = cart.items.reduce((discount: number, item: ICartItem) => {
             if (item.productId && (item.productId as IProduct).mrp && (item.productId as IProduct).price) {
                 return discount + (((item.productId as IProduct).mrp - (item.productId as IProduct).price) * item.quantity);
             }
@@ -129,18 +128,18 @@ export const removeFromCart = asyncHandler(async (req: Request, res: Response): 
         throw new ApiError(404, "Cart not found.");
     }
 
-    existingCart.items = existingCart.items.filter((item: ICartItemDocument) => {
+    existingCart.items = existingCart.items.filter((item: ICartItem) => {
         return item.productId && ((item.productId as IProduct)?._id?.toString() ?? '') !== productId;
     });
 
-    existingCart.subtotal = existingCart.items.reduce((subtotal: number, item: ICartItemDocument) => {
+    existingCart.subtotal = existingCart.items.reduce((subtotal: number, item: ICartItem) => {
         if (item.productId && (item.productId as IProduct).mrp) {
             return subtotal + ((item.productId as IProduct).mrp * item.quantity);
         }
         return subtotal;
     }, 0);
 
-    existingCart.discount = existingCart.items.reduce((discount: number, item: ICartItemDocument) => {
+    existingCart.discount = existingCart.items.reduce((discount: number, item: ICartItem) => {
         if (item.productId && (item.productId as IProduct).mrp && (item.productId as IProduct).price) {
             return discount + (((item.productId as IProduct).mrp - (item.productId as IProduct).price) * item.quantity);
         }
@@ -172,21 +171,21 @@ export const updateCartItemQuantity = asyncHandler(async (req: Request, res: Res
         throw new ApiError(404, "Cart not found.");
     }
 
-    existingCart.items = existingCart.items.map((item: ICartItemDocument) => {
+    existingCart.items = existingCart.items.map((item: ICartItem) => {
         if (item.productId && ((item.productId as IProduct)?._id?.toString() ?? '') === productId) {
             item.quantity = quantity;
         }
         return item;
     });
 
-    existingCart.subtotal = existingCart.items.reduce((subtotal: number, item: ICartItemDocument) => {
+    existingCart.subtotal = existingCart.items.reduce((subtotal: number, item: ICartItem) => {
         if (item.productId && (item.productId as IProduct).mrp) {
             return subtotal + ((item.productId as IProduct).mrp * item.quantity);
         }
         return subtotal;
     }, 0);
 
-    existingCart.discount = existingCart.items.reduce((discount: number, item: ICartItemDocument) => {
+    existingCart.discount = existingCart.items.reduce((discount: number, item: ICartItem) => {
         if (item.productId && (item.productId as IProduct).mrp && (item.productId as IProduct).price) {
             return discount + (((item.productId as IProduct).mrp - (item.productId as IProduct).price) * item.quantity);
         }

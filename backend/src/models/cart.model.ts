@@ -6,21 +6,16 @@ export interface ICartItem {
     quantity: number;
 }
 
-export interface ICartItemDocument {
-    productId: Schema.Types.ObjectId | IProduct;
-    quantity: number;
-}
-
 export interface ICartDocument extends Document {
     userId: Schema.Types.ObjectId;
-    items: ICartItemDocument[];
+    items: ICartItem[];
     subtotal: number;
     discount: number;
     tax: number;
     total: number;
 }
 
-const cartItemSchema = new Schema<ICartItemDocument>({
+const cartItemSchema = new Schema<ICartItem>({
     productId: {
         type: Schema.Types.ObjectId,
         ref: "Product"
