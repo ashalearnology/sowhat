@@ -6,9 +6,9 @@ import { ApiResponse } from "../utils/ApiResponse.ts";
 import Category from "../models/category.model.ts";
 
 export const addProduct = asyncHandler(async (req: Request, res: Response): Promise<void> => {
-    const { name, description, size, price, quantity, isFeatured, onSale, category } = req.body;
+    const { name, description, sizes, mrp, price, isFeatured, onSale, category } = req.body;
 
-    if ([name, description, size, price, quantity, category].some((field) => !field)) {
+    if ([name, description, sizes, mrp, price, category].some((field) => !field)) {
         throw new ApiError(400, "All fields are required.");
     }
 
@@ -27,9 +27,9 @@ export const addProduct = asyncHandler(async (req: Request, res: Response): Prom
         slug: customSlug,
         description,
         category,
-        size,
+        sizes: sizes.map((size: { size: string; stock: number }) => ({ size: size.size, stock: size.stock })),
+        mrp,
         price,
-        quantity,
         isFeatured,
         onSale
     });
@@ -53,7 +53,7 @@ export const addMultipleProducts = asyncHandler(async (req: Request, res: Respon
     const createdProducts = [];
 
     for (const product of products) {
-        if ([product.name, product.description, product.size, product.price, product.quantity, product.category].some((field) => !field)) {
+        if ([product.name, product.description, product.sizes, product.mrp, product.price, product.category].some((field) => !field)) {
             throw new ApiError(400, "All fields are required.");
         }
 
@@ -72,9 +72,9 @@ export const addMultipleProducts = asyncHandler(async (req: Request, res: Respon
             slug: customSlug,
             description: product.description,
             category: product.category,
-            size: product.size,
+            sizes: product.sizes.map((size: { size: string; stock: number }) => ({ size: size.size, stock: size.stock })),
+            mrp: product.mrp,
             price: product.price,
-            quantity: product.quantity,
             isFeatured: product.isFeatured,
             onSale: product.onSale
         })
@@ -144,19 +144,35 @@ export const getProductById = asyncHandler(async (req: Request, res: Response): 
 });
 
 export const updateProduct = asyncHandler(async (req: Request, res: Response): Promise<void> => {
-    const { name, description, size, price, quantity, isFeatured, onSale } = req.body;
+    const { name, description, sizes, mrp, price, isFeatured, onSale } = req.body;
 
-    // TODO: Save image
+    const existingProduct = await Product.findById(req.params.id).lean();
+
+    if (!existingProduct) {
+        throw new ApiError(404, "Product not found.");
+    }
 
     const updatedSlug = name.toLowerCase().replace(/ /g, "-") + "-" + Date.now();
+
+    const updatedSizes = [...existingProduct.sizes];
+
+    sizes.forEach((newSize: { size: string; stock: number }) => {
+        const existingSizeIndex = updatedSizes.findIndex(size => size.size === newSize.size);
+
+        if (existingSizeIndex !== -1) {
+            updatedSizes[existingSizeIndex].stock += newSize.stock;
+        } else {
+            updatedSizes.push(newSize);
+        }
+    });
 
     const product = await Product.findByIdAndUpdate(req.params.id, {
         name,
         slug: updatedSlug,
         description,
-        size,
+        sizes: updatedSizes,
+        mrp,
         price,
-        quantity,
         isFeatured,
         onSale
     }, { new: true });

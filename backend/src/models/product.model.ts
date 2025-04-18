@@ -1,16 +1,21 @@
 import { Schema, model, Types } from "mongoose";
 
-interface IProduct {
+export interface ISizes {
+    size: string;
+    stock: number;
+}
+
+export interface IProduct {
     _id?: string;
     name: string;
     slug: string;
     description: string;
     images: string[];
-    size: string;
+    sizes: ISizes[];
     wishlist: boolean;
     category: Types.ObjectId;
+    mrp: number;
     price: number;
-    quantity: number;
     isFeatured: boolean;
     onSale: boolean;
     isWishlist: boolean;
@@ -41,26 +46,35 @@ const productSchema = new Schema<IProduct>({
     },
     images: {
         type: [String],
-        // required: [true, "Product images are required"],
     },
-    size: {
-        type: String,
-        trim: true
-    },
+    sizes: [
+        {
+            size: {
+                type: String,
+                required: true,
+                enum: ["2XS", "XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL", "6XL"]
+            },
+            stock: {
+                type: Number,
+                required: true,
+                min: [0, "Product stock cannot be negative"]
+            }
+        }
+    ],
     category: {
         type: Schema.Types.ObjectId,
         ref: "Category",
         required: true
     },
+    mrp: {
+        type: Number,
+        required: [true, "Product MRP is required"],
+        min: [0, "Product MRP cannot be negative"],  
+    },
     price: {
         type: Number,
         required: [true, "Product price is required"],
         min: [0, "Product price cannot be negative"],
-    },
-    quantity: {
-        type: Number,
-        required: [true, "Product quantity is required"],
-        min: [0, "Product quantity cannot be negative"],
     },
     onSale: {
         type: Boolean,
