@@ -2,8 +2,6 @@ import { Request, Response, NextFunction } from 'express';
 import { ApiError } from '../utils/ApiError.ts';
 
 const errorHandler = (err: ApiError | Error | any, req: Request, res: Response, next: NextFunction) => {
-    console.error("Global Error Handler:", err);
-
     let statusCode = 500;
     let message = "Something went wrong";
     let errors: any[] = [];
@@ -21,7 +19,7 @@ const errorHandler = (err: ApiError | Error | any, req: Request, res: Response, 
     res.status(statusCode).json({
         success: false,
         statusCode,
-        message: statusCode === 500 ? "An error occurred" : message,
+        message: message,
         errors: errors,
     });
 };

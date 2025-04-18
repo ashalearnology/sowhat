@@ -2,11 +2,12 @@ import { Router } from "express";
 import { addMultipleProducts, addProduct, deleteProduct, getFeaturedProducts, getOnSaleProducts, getProductById, getProducts, getProductsByCategory, searchProducts, updateProduct } from "../controllers/product.controller.ts";
 import { authorizedRoles } from "../middlewares/authorizedRoles.middleware.ts";
 import { isLoggedIn } from "../middlewares/auth.middleware.ts";
+import { upload } from "../middlewares/multer.middleware.ts";
 
 const router: Router = Router();
 
 router.route("/")
-    .post(isLoggedIn, authorizedRoles("admin"), addProduct)
+    .post(isLoggedIn, authorizedRoles("admin"), upload.array("images", 5), addProduct)
     .get(getProducts);
 
 router.route("/featured")

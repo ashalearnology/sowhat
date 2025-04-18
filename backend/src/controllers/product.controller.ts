@@ -13,6 +13,7 @@ export const addProduct = asyncHandler(async (req: Request, res: Response): Prom
     }
 
     // TODO: Save image
+    
 
     const existingCategory = await Category.findOne({ _id: category }, { _id: 1 }).lean();
 
